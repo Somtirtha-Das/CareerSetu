@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerSetu Teacher Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#fffaf5;--surface:#ffffff;--surface2:#fff2e3;--text:#1b140f;--muted:#7d6654;--border:#eedfce;--primary:#c76816;--primary2:#ffe2c2;--green:#2e7a4d;--shadow:0 18px 45px rgba(79,45,14,.08);--radius:22px}
+    *{box-sizing:border-box}body{margin:0;font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text)}button,input,select{font:inherit}button{cursor:pointer;border:none}.layout{display:grid;grid-template-columns:94px 1fr;min-height:100vh}
+    .rail{background:#21150d;color:#f8eee4;padding:20px 16px;display:flex;flex-direction:column;align-items:center;gap:18px}.rail .dot{width:54px;height:54px;border-radius:18px;background:linear-gradient(135deg,#cf761d,#ffb868);display:grid;place-items:center;font-weight:800}.rail button{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.06);color:#eedfce;border:none}.rail button.active,.rail button:hover{background:rgba(255,255,255,.14);color:#fff}
+    .main{padding:24px 28px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center}.title p{color:var(--muted);margin:6px 0 0}.actions{display:flex;gap:10px;align-items:center}.search{padding:14px 16px;border-radius:999px;border:1px solid var(--border);min-width:280px;background:var(--surface)}
+    .btn{padding:12px 16px;border-radius:999px;font-weight:800}.btn.primary{background:var(--primary);color:#fff}.btn.soft{background:var(--surface2);color:var(--text);border:1px solid var(--border)}
+    .hero,.grid-3,.grid-2{display:grid;gap:18px}.hero{grid-template-columns:1.05fr .95fr;margin-top:22px}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-2{grid-template-columns:repeat(2,1fr)}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}.accent{background:linear-gradient(135deg,#8f4506,#cf761d);color:#fff;position:relative;overflow:hidden}.accent p{color:rgba(255,255,255,.84)}.accent::after{content:"";position:absolute;inset:auto -20px -30px auto;width:140px;height:140px;border-radius:28px;background:rgba(255,255,255,.08);transform:rotate(18deg)}
+    .muted{color:var(--muted)}.metric{font-size:30px;font-weight:800}.table{display:grid;gap:12px;margin-top:14px}.row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px;border-radius:16px;background:var(--surface2)}.tag{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--primary2);color:var(--primary);font-size:12px;font-weight:800}.progress{height:10px;border-radius:999px;background:#f3dfcb;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--primary),#ffb15a);transition:.35s ease}.panel{display:none}.panel.active{display:block}.notice{margin-top:14px;padding:12px 14px;border-radius:14px;background:#fff4e8;color:#8f4506;font-weight:700;display:none}.notice.show{display:block}
+    @media (max-width:1000px){.layout{grid-template-columns:1fr}.rail{display:none}.hero,.grid-3,.grid-2{grid-template-columns:1fr}.top{flex-direction:column;align-items:flex-start}.search{min-width:0;width:100%}}
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="rail">
+      <div class="dot">C</div>
+      <button class="nav-btn active" data-panel="home">Home</button>
+      <button class="nav-btn" data-panel="jobs">Jobs</button>
+      <button class="nav-btn" data-panel="courses">Courses</button>
+      <button class="nav-btn" data-panel="students">Students</button>
+      <button class="nav-btn" data-panel="earnings">₹</button>
+      <button class="nav-btn" data-panel="profile">Me</button>
+    </aside>
+    <main class="main">
+      <div class="top">
+        <div class="title"><h1 style="margin:0;font-size:34px">Teacher Command Center</h1><p>Designed for job discovery, course publishing, tuition matching, and revenue tracking.</p></div>
+        <div class="actions">
+
+  <input
+    class="search"
+    id="teacherGlobalSearch"
+    placeholder="Search institute jobs, student leads, subject demand"
+  >
+
+  <button class="btn primary" id="quickUpload">
+    Upload Course
+  </button>
+
+  <div style="display:flex;align-items:center;gap:12px;">
+
+    <strong id="dashboard-user-name">
+      User
+    </strong>
+
+    <button onclick="logout()" class="btn soft">
+      Logout
+    </button>
+
+  </div>
+
+</div>
+      </div>
+
+      <section class="panel active" id="home">
+        <section class="hero">
+          <article class="card accent"><span class="tag" style="background:rgba(255,255,255,.15);color:#fff">Educator Growth</span><h2 style="font-size:36px;line-height:1.1;margin:14px 0 10px">Turn expertise into jobs, tuition demand, and course income.</h2><p>CareerSetu gives teachers a dedicated job marketplace, content monetization tools, and tuition matching with students.[file:18]</p><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px"><button class="btn primary" style="background:#fff;color:#9c520c" id="viewJobsBtn">View Job Matches</button><button class="btn soft" style="background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.2)" id="openAnalyticsBtn">Open Analytics</button></div><div class="notice" id="teacherNotice"></div></article>
+          <article class="card"><div class="muted">Monthly earnings snapshot</div><div class="metric" id="earningsTotal">₹38,450</div><p class="muted">Course sales, tuition sessions, and premium mentoring combined.</p><div style="margin-top:18px" class="progress"><span id="earningsBar" style="width:76%"></span></div><div class="table"><div class="row"><div><strong>Course sales</strong><div class="muted">4 active products</div></div><span class="tag">₹21,900</span></div><div class="row"><div><strong>Live tuition</strong><div class="muted">18 students this month</div></div><span class="tag">₹12,300</span></div><div class="row"><div><strong>Doubt sessions</strong><div class="muted">On-demand support</div></div><span class="tag">₹4,250</span></div></div></article>
+        </section>
+      </section>
+
+      <section class="panel" id="jobs"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Recommended institute jobs</h2><div class="table" id="jobTable"><div class="row"><div><strong>Senior Commerce Faculty</strong><div class="muted">Bright Future Institute · Kolkata</div></div><button class="btn soft apply-btn">Apply</button></div><div class="row"><div><strong>Verbal Ability Trainer</strong><div class="muted">NorthStar Academy · Hybrid</div></div><button class="btn soft apply-btn">Apply</button></div><div class="row"><div><strong>CUET Mentor</strong><div class="muted">CareerLaunch Center</div></div><button class="btn soft apply-btn">Apply</button></div></div><div class="notice" id="jobNotice"></div></article></section>
+
+      <section class="panel" id="courses"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Course publishing panel</h2><div class="table"><div class="row"><div><strong>Accounts for BBA Students</strong><div class="muted">Enrollment 184 · Rating 4.8</div></div><button class="btn soft promo-btn" data-boost="₹24,200">Boost Sales</button></div><div class="row"><div><strong>Spoken English Accelerator</strong><div class="muted">Enrollment 96 · Rating 4.7</div></div><button class="btn soft promo-btn" data-boost="₹19,300">Boost Sales</button></div><div class="row"><div><strong>Business Maths Fast Track</strong><div class="muted">Draft course awaiting upload</div></div><button class="btn primary" id="publishDraft">Publish</button></div></div><div class="notice" id="courseNotice"></div></article></section>
+
+      <section class="panel" id="students"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Tuition matching requests</h2><p class="muted">The platform’s teacher features include tuition matching that connects teachers with students seeking specific subjects.[file:18]</p><div class="table"><div class="row"><div><strong>Class 12 Commerce</strong><div class="muted">Weekly 3 sessions · Evening slot</div></div><button class="btn soft accept-student">Accept</button></div><div class="row"><div><strong>BBA Statistics Support</strong><div class="muted">Weekend doubt sessions</div></div><button class="btn soft accept-student">Accept</button></div><div class="row"><div><strong>Interview Skills Mentorship</strong><div class="muted">Graduate learner</div></div><button class="btn soft accept-student">Accept</button></div></div><div class="notice" id="studentNotice"></div></article></section>
+
+      <section class="panel" id="earnings"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Performance analytics</h2><div class="table"><div class="row"><div><strong>Student completion rate</strong><div class="muted">Across paid courses</div></div><span class="tag">82%</span></div><div class="row"><div><strong>Average rating</strong><div class="muted">Based on 224 reviews</div></div><span class="tag">4.8/5</span></div><div class="row"><div><strong>Content conversion</strong><div class="muted">Preview to purchase ratio</div></div><span class="tag">31%</span></div></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn primary" id="refreshAnalytics">Refresh Analytics</button></div><div class="notice" id="analyticsNotice"></div></article></section>
+
+      <section class="panel" id="profile"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Profile strength</h2><p class="muted">Improve visibility by completing achievements, experience, and demo lessons.</p><div class="progress" style="margin:14px 0 8px"><span id="profileBar" style="width:72%"></span></div><strong id="profileValue">72% complete</strong><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn primary" id="completeProfile">Complete Profile</button></div><div class="notice" id="profileNotice"></div></article></section>
+    </main>
+  </div>
+  <script>
+    const panels=document.querySelectorAll('.panel');
+    const navBtns=document.querySelectorAll('.nav-btn');
+    navBtns.forEach(btn=>btn.addEventListener('click',()=>{navBtns.forEach(b=>b.classList.remove('active'));btn.classList.add('active');panels.forEach(p=>p.classList.remove('active'));document.getElementById(btn.dataset.panel).classList.add('active')}));
+    const teacherNotice=document.getElementById('teacherNotice');
+    document.getElementById('quickUpload').onclick=()=>{navBtns.forEach(b=>b.classList.remove('active'));document.querySelector('[data-panel="courses"]').classList.add('active');panels.forEach(p=>p.classList.remove('active'));document.getElementById('courses').classList.add('active')};
+    document.getElementById('viewJobsBtn').onclick=()=>{navBtns.forEach(b=>b.classList.remove('active'));document.querySelector('[data-panel="jobs"]').classList.add('active');panels.forEach(p=>p.classList.remove('active'));document.getElementById('jobs').classList.add('active')};
+    document.getElementById('openAnalyticsBtn').onclick=()=>{teacherNotice.textContent='Analytics synced with your latest course and tuition performance.';teacherNotice.classList.add('show')};
+    document.querySelectorAll('.apply-btn').forEach(btn=>btn.onclick=()=>{const n=document.getElementById('jobNotice');n.textContent='Application submitted successfully.';n.classList.add('show');btn.textContent='Applied';btn.disabled=true});
+    document.querySelectorAll('.promo-btn').forEach(btn=>btn.onclick=()=>{const n=document.getElementById('courseNotice');n.textContent='Promotion campaign started. Expected revenue projection: '+btn.dataset.boost+'.';n.classList.add('show')});
+    document.getElementById('publishDraft').onclick=()=>{const n=document.getElementById('courseNotice');n.textContent='Draft course published and now visible to students.';n.classList.add('show')};
+    document.querySelectorAll('.accept-student').forEach(btn=>btn.onclick=()=>{const n=document.getElementById('studentNotice');n.textContent='Tuition request accepted. Demo session scheduled.';n.classList.add('show');btn.textContent='Accepted';btn.disabled=true});
+    document.getElementById('refreshAnalytics').onclick=()=>{const total='₹'+(36000+Math.floor(Math.random()*8000)).toLocaleString('en-IN');document.getElementById('earningsTotal').textContent=total;document.getElementById('earningsBar').style.width=(70+Math.floor(Math.random()*20))+'%';const n=document.getElementById('analyticsNotice');n.textContent='Analytics refreshed with updated revenue snapshot: '+total+'.';n.classList.add('show')};
+    document.getElementById('completeProfile').onclick=()=>{document.getElementById('profileBar').style.width='94%';document.getElementById('profileValue').textContent='94% complete';const n=document.getElementById('profileNotice');n.textContent='Profile updated. Your discoverability score has improved.';n.classList.add('show')};
+    document.getElementById('teacherGlobalSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){teacherNotice.textContent='Search loaded for: '+e.target.value;teacherNotice.classList.add('show')}});
+  </script>
+<script>
+
+const currentUser =
+JSON.parse(localStorage.getItem('careersetuUser'));
+
+if(currentUser){
+
+  const userName =
+  document.getElementById('dashboard-user-name');
+
+  if(userName){
+
+    userName.innerText = currentUser.name;
+
+  }
+
+}
+
+function logout(){
+
+  localStorage.removeItem('careersetuUser');
+
+  window.location.href =
+  'www.careersetu.com.html';
+
+}
+
+</script>
+</body>
+</html>
