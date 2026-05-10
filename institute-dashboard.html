@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerSetu Institute Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f4faf6;--surface:#fff;--surface2:#eaf8ef;--text:#102117;--muted:#62806e;--border:#d7ebde;--primary:#1d8b4f;--primary2:#dff5e7;--accent:#0f172a;--shadow:0 18px 45px rgba(19,60,36,.08);--radius:22px}
+    *{box-sizing:border-box}body{margin:0;font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text)}button,input,select{font:inherit}button{cursor:pointer;border:none}
+    .shell{display:grid;grid-template-columns:300px 1fr;min-height:100vh}.sidebar{background:#0d1f14;color:#ecfff3;padding:24px;display:grid;grid-template-rows:auto auto 1fr auto;gap:22px}.brand{display:flex;gap:12px;align-items:center}.badge{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,#239654,#69d892);display:grid;place-items:center;font-weight:800}.nav{display:grid;gap:10px}.nav button{color:#b9dcc4;padding:12px 14px;border-radius:14px;background:transparent;border:none;text-align:left}.nav button.active,.nav button:hover{background:rgba(255,255,255,.08);color:#fff}.note{padding:18px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+    .main{padding:24px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:20px}.search{padding:14px 18px;border-radius:999px;border:1px solid var(--border);min-width:320px;background:var(--surface)}.btn{padding:12px 16px;border-radius:999px;font-weight:800}.btn.primary{background:var(--primary);color:#fff}.btn.soft{background:var(--surface2);border:1px solid var(--border)}
+    .hero,.grid-4,.grid-3,.grid-2{display:grid;gap:18px}.hero{grid-template-columns:1.15fr .85fr}.grid-4{grid-template-columns:repeat(4,1fr)}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-2{grid-template-columns:repeat(2,1fr)}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}.dark-card{background:linear-gradient(135deg,#123621,#1d8b4f);color:#fff;position:relative;overflow:hidden}.dark-card p{color:rgba(255,255,255,.84)}.dark-card::after{content:"";position:absolute;right:-20px;top:-20px;width:120px;height:120px;background:rgba(255,255,255,.08);border-radius:28px;transform:rotate(24deg)}
+    .muted{color:var(--muted)}.metric{font-size:30px;font-weight:800}.table{display:grid;gap:12px;margin-top:14px}.row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px;border-radius:16px;background:var(--surface2)}.tag{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--primary2);color:var(--primary);font-size:12px;font-weight:800}.progress{height:10px;border-radius:999px;background:#d9ecdf;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--primary),#6fd38f);transition:.35s ease}.panel{display:none}.panel.active{display:block}.notice{margin-top:14px;padding:12px 14px;border-radius:14px;background:#eefbf2;color:#1d8b4f;font-weight:700;display:none}.notice.show{display:block}
+    @media (max-width:1100px){.shell{grid-template-columns:1fr}.sidebar{display:none}.hero,.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}.top{flex-direction:column;align-items:flex-start}.search{min-width:0;width:100%}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="badge">C</div><div><strong>CareerSetu</strong><div style="font-size:12px;color:#b9dcc4">Institute Dashboard</div></div></div>
+      <nav class="nav">
+        <button class="nav-btn active" data-panel="overview">Overview</button>
+        <button class="nav-btn" data-panel="campaigns">Ad Campaigns</button>
+        <button class="nav-btn" data-panel="leads">Student Leads</button>
+        <button class="nav-btn" data-panel="hiring">Teacher Hiring</button>
+        <button class="nav-btn" data-panel="courses">Course Listings</button>
+        <button class="nav-btn" data-panel="reports">Reports</button>
+      </nav>
+      <div></div>
+      <div class="note"><strong>Institute Growth</strong><p style="color:#b9dcc4">Manage visibility, admissions leads, and faculty recruitment from one workspace.</p></div>
+    </aside>
+    <main class="main">
+      <div class="top">
+        <div><h1 style="margin:0;font-size:34px">Institute Growth Dashboard</h1><p class="muted" style="margin:6px 0 0">Built for advertising, lead generation, and teacher recruitment.</p></div>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+
+  <input
+    class="search"
+    id="instituteSearch"
+    placeholder="Search campaigns, student leads, teacher candidates"
+  >
+
+  <button class="btn primary" id="createCampaignTop">
+    Create Ad Campaign
+  </button>
+
+  <div style="display:flex;align-items:center;gap:12px;">
+
+    <strong id="dashboard-user-name">
+      User
+    </strong>
+
+    <button onclick="logout()" class="btn soft">
+      Logout
+    </button>
+
+  </div>
+
+</div>
+      </div>
+
+      <section class="panel active" id="overview">
+        <section class="hero">
+          <article class="card dark-card"><span class="tag" style="background:rgba(255,255,255,.14);color:#fff">Admissions Engine</span><h2 style="font-size:36px;line-height:1.1;margin:14px 0 10px">Promote courses, attract leads, and hire qualified educators faster.</h2><p>CareerSetu gives institutes advertisement listings, student lead generation, and recruitment tools for teachers.[file:18]</p><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px"><button class="btn primary" style="background:#fff;color:#17693c" id="viewLeadsBtn">View Leads</button><button class="btn soft" style="background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.18)" id="postHiringBtn">Post Hiring Ad</button></div><div class="notice" id="overviewNotice"></div></article>
+          <article class="card"><div class="muted">Campaign performance</div><div class="metric" id="leadMetric">1,248</div><p class="muted">Student inquiries generated this month through featured listings and targeted campaigns.</p><div style="margin-top:18px" class="progress"><span id="leadBar" style="width:83%"></span></div><div class="table"><div class="row"><div><strong>Featured BBA Campaign</strong><div class="muted">CTR and enquiries improving</div></div><span class="tag">High</span></div><div class="row"><div><strong>CA Foundation Ad</strong><div class="muted">Top-performing course listing</div></div><span class="tag">Best ROI</span></div></div></article>
+        </section>
+      </section>
+
+      <section class="panel" id="campaigns"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Ad campaign controls</h2><div class="table"><div class="row"><div><strong>Homepage Banner Slot</strong><div class="muted">Premium visibility for flagship program</div></div><button class="btn soft campaign-toggle">Pause</button></div><div class="row"><div><strong>Featured Institute Card</strong><div class="muted">Shown in student search results</div></div><button class="btn soft campaign-toggle">Pause</button></div></div><div class="notice" id="campaignNotice"></div></article></section>
+
+      <section class="panel" id="leads"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Lead generation overview</h2><div class="table"><div class="row"><div><strong>BBA Program Leads</strong><div class="muted">114 interested students</div></div><button class="btn soft convert-btn">Mark Follow-up</button></div><div class="row"><div><strong>CUET Foundation Leads</strong><div class="muted">87 enquiries in 7 days</div></div><button class="btn soft convert-btn">Mark Follow-up</button></div><div class="row"><div><strong>Skill Certification Leads</strong><div class="muted">62 prospect learners</div></div><button class="btn soft convert-btn">Mark Follow-up</button></div></div><div class="notice" id="leadNotice"></div></article></section>
+
+      <section class="panel" id="hiring"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Teacher recruitment board</h2><div class="table"><div class="row"><div><strong>Accounts Faculty</strong><div class="muted">12 applicants shortlisted</div></div><button class="btn soft shortlist-btn">Shortlist</button></div><div class="row"><div><strong>English Trainer</strong><div class="muted">8 verified applicants</div></div><button class="btn soft shortlist-btn">Shortlist</button></div><div class="row"><div><strong>Data Analytics Mentor</strong><div class="muted">5 high-fit profiles</div></div><button class="btn soft shortlist-btn">Shortlist</button></div></div><div class="notice" id="hiringNotice"></div></article></section>
+
+      <section class="panel" id="courses"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Course promotions</h2><div class="table"><div class="row"><div><strong>BBA Entrance Batch</strong><div class="muted">Ad budget ₹12,000</div></div><button class="btn primary budget-btn" data-budget="₹15,000">Increase Budget</button></div><div class="row"><div><strong>CA Foundation Elite</strong><div class="muted">Ad budget ₹18,000</div></div><button class="btn primary budget-btn" data-budget="₹22,000">Increase Budget</button></div></div><div class="notice" id="courseNotice"></div></article></section>
+
+      <section class="panel" id="reports"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Reports and insights</h2><p class="muted">Institute tools are designed to improve campaign efficiency, student acquisition, and staffing decisions.[file:18]</p><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary" id="refreshReports">Refresh Reports</button></div><div class="notice" id="reportNotice"></div></article></section>
+    </main>
+  </div>
+  <script>
+    const panels=document.querySelectorAll('.panel');
+    const navBtns=document.querySelectorAll('.nav-btn');
+    navBtns.forEach(btn=>btn.addEventListener('click',()=>{navBtns.forEach(b=>b.classList.remove('active'));btn.classList.add('active');panels.forEach(p=>p.classList.remove('active'));document.getElementById(btn.dataset.panel).classList.add('active')}));
+    const gotoPanel=(name)=>{navBtns.forEach(b=>b.classList.remove('active'));document.querySelector('[data-panel="'+name+'"]').classList.add('active');panels.forEach(p=>p.classList.remove('active'));document.getElementById(name).classList.add('active')};
+    document.getElementById('createCampaignTop').onclick=()=>gotoPanel('campaigns');
+    document.getElementById('viewLeadsBtn').onclick=()=>gotoPanel('leads');
+    document.getElementById('postHiringBtn').onclick=()=>gotoPanel('hiring');
+    document.querySelectorAll('.campaign-toggle').forEach(btn=>btn.onclick=()=>{btn.textContent=btn.textContent==='Pause'?'Resume':'Pause';const n=document.getElementById('campaignNotice');n.textContent='Campaign status updated successfully.';n.classList.add('show')});
+    document.querySelectorAll('.convert-btn').forEach(btn=>btn.onclick=()=>{btn.textContent='Follow-up Set';btn.disabled=true;const n=document.getElementById('leadNotice');n.textContent='Lead moved into follow-up pipeline.';n.classList.add('show')});
+    document.querySelectorAll('.shortlist-btn').forEach(btn=>btn.onclick=()=>{btn.textContent='Shortlisted';btn.disabled=true;const n=document.getElementById('hiringNotice');n.textContent='Candidate shortlisted for next review round.';n.classList.add('show')});
+    document.querySelectorAll('.budget-btn').forEach(btn=>btn.onclick=()=>{const n=document.getElementById('courseNotice');n.textContent='Campaign budget increased. New recommendation budget: '+btn.dataset.budget+'.';n.classList.add('show')});
+    document.getElementById('refreshReports').onclick=()=>{const leads=1100+Math.floor(Math.random()*300);document.getElementById('leadMetric').textContent=leads.toLocaleString('en-IN');document.getElementById('leadBar').style.width=(76+Math.floor(Math.random()*15))+'%';const n=document.getElementById('reportNotice');n.textContent='Reports refreshed. Updated monthly lead count: '+leads.toLocaleString('en-IN')+'.';n.classList.add('show')};
+    document.getElementById('instituteSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){const n=document.getElementById('overviewNotice');n.textContent='Search loaded for: '+e.target.value;n.classList.add('show')}});
+  </script>
+<script>
+
+const currentUser =
+JSON.parse(localStorage.getItem('careersetuUser'));
+
+if(currentUser){
+
+  const userName =
+  document.getElementById('dashboard-user-name');
+
+  if(userName){
+
+    userName.innerText = currentUser.name;
+
+  }
+
+}
+
+function logout(){
+
+  localStorage.removeItem('careersetuUser');
+
+  window.location.href =
+  'www.careersetu.com.html';
+
+}
+
+</script>
+</body>
+</html>

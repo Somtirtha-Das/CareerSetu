@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerSetu Student Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f4f7fb;--surface:#fff;--surface2:#edf3ff;--text:#101827;--muted:#64748b;--border:#dbe4f0;--primary:#165ddb;--primary2:#dce9ff;--success:#23704b;--danger:#b42318;--shadow:0 18px 45px rgba(15,23,42,.08);--radius:22px}
+    *{box-sizing:border-box}body{margin:0;font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text)}a{text-decoration:none;color:inherit}button,input,select{font:inherit}button{cursor:pointer}
+    .app{display:grid;grid-template-columns:270px 1fr;min-height:100vh}.sidebar{background:#0d1730;color:#eef4ff;padding:24px;display:grid;grid-template-rows:auto auto 1fr auto;gap:24px}.brand{display:flex;gap:12px;align-items:center}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#1d66ea,#65a1ff);display:grid;place-items:center;font-weight:800}.side-group{display:grid;gap:10px}.side-link{padding:12px 14px;border-radius:14px;color:#bdd0f2;background:transparent;border:none;text-align:left}.side-link.active,.side-link:hover{background:rgba(255,255,255,.08);color:#fff}.upgrade{padding:18px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08)}
+    .main{padding:24px}.topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:24px}.search{flex:1;max-width:520px;padding:14px 18px;border-radius:999px;border:1px solid var(--border);background:var(--surface)}.profile{display:flex;gap:12px;align-items:center}.avatar{width:46px;height:46px;border-radius:50%;background:#cfe0ff;display:grid;place-items:center;font-weight:800;color:#0f3e94}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-bottom:18px}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}.hero-card{background:linear-gradient(135deg,#114db8,#2a73ff);color:#fff;position:relative;overflow:hidden}.hero-card p{color:rgba(255,255,255,.82)}.hero-card::after{content:"";position:absolute;right:-30px;bottom:-30px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.08)}
+    .grid-4,.grid-3,.grid-2{display:grid;gap:18px}.grid-4{grid-template-columns:repeat(4,1fr)}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-2{grid-template-columns:repeat(2,1fr)}.stat{font-size:30px;font-weight:800}.muted{color:var(--muted)}.chip{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--primary2);color:var(--primary);font-size:12px;font-weight:800}
+    .list{display:grid;gap:12px;margin-top:14px}.row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:14px;border-radius:16px;background:var(--surface2)}.progress{height:10px;border-radius:999px;background:#dfe8f7;overflow:hidden}.progress > span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--primary),#69a0ff);transition:.35s ease}
+    .btn{padding:12px 16px;border-radius:999px;border:none;background:var(--primary);color:#fff;font-weight:800}.btn.secondary{background:var(--surface2);color:var(--text);border:1px solid var(--border)}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.section{display:none}.section.active{display:block}.notice{margin-top:14px;padding:12px 14px;border-radius:14px;background:#eff8f1;color:var(--success);font-weight:700;display:none}.notice.show{display:block}.danger{color:var(--danger)}
+    @media (max-width:1100px){.app{grid-template-columns:1fr}.sidebar{display:none}.hero,.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="logo">C</div><div><strong>CareerSetu</strong><div style="font-size:12px;color:#bdd0f2">Student Dashboard</div></div></div>
+      <div class="side-group">
+        <button class="side-link active" data-section="overview">Overview</button>
+        <button class="side-link" data-section="guidance">Career Guidance</button>
+        <button class="side-link" data-section="teachers">Find Teachers</button>
+        <button class="side-link" data-section="institutes">Find Institutes</button>
+        <button class="side-link" data-section="courses">My Courses</button>
+        <button class="side-link" data-section="tests">Mock Tests</button>
+      </div>
+      <div></div>
+      <div class="upgrade"><strong>Student Pro</strong><p style="color:#bdd0f2">Unlock counseling slots, advanced reports, and premium exam packs.</p></div>
+    </aside>
+    <main class="main">
+      <div class="topbar">
+        <input class="search" id="globalSearch" placeholder="Search teachers, institutes, JEE, NEET, CUET, BBA courses">
+        <div class="profile">
+
+  <div class="avatar">U</div>
+
+  <div>
+    <strong id="dashboard-user-name">
+      User
+    </strong>
+
+    <div class="muted">
+      CareerSetu Member
+    </div>
+  </div>
+
+  <button onclick="logout()" class="btn">
+    Logout
+  </button>
+
+</div>
+      </div>
+
+      <section class="section active" id="overview">
+        <section class="hero">
+          <article class="card hero-card"><span class="chip" style="background:rgba(255,255,255,.14);color:#fff">Career Journey</span><h1 style="margin:12px 0 8px;font-size:38px;line-height:1.1">Your learning path, mentor search, and course planning in one place.</h1><p>CareerSetu supports students through career recommendations, course discovery, personalized counseling, and competitive exam preparation.[file:18]</p><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px"><button class="btn" id="bookCounseling">Book Counseling</button><button class="btn secondary" id="openCourses">Explore Courses</button></div><div class="notice" id="studentNotice"></div></article>
+          <article class="card"><div class="muted">Recommendation Match</div><div class="stat" id="matchScore">89%</div><p class="muted">Based on your interest profile, commerce performance, and future goals.</p><div style="margin-top:18px" class="progress"><span id="matchBar" style="width:89%"></span></div><div class="toolbar"><button class="btn secondary rec-btn" data-score="89" data-path="BBA in Business Analytics">Business</button><button class="btn secondary rec-btn" data-score="82" data-path="Digital Marketing">Marketing</button><button class="btn secondary rec-btn" data-score="77" data-path="Data Analytics">Analytics</button></div><div class="list"><div class="row"><div><strong id="bestPath">BBA in Business Analytics</strong><div class="muted">Top fit career path</div></div><span class="chip">Best Match</span></div><div class="row"><div><strong>CUET Smart Prep</strong><div class="muted">Recommended next course</div></div><span class="chip">₹4,999</span></div></div></article>
+        </section>
+        <section class="grid-4">
+          <article class="card"><div class="muted">Saved Teachers</div><div class="stat" id="savedTeachers">12</div><div class="muted">Shortlisted subject experts</div></article>
+          <article class="card"><div class="muted">Institutes Compared</div><div class="stat">7</div><div class="muted">Admissions and fees reviewed</div></article>
+          <article class="card"><div class="muted">Active Courses</div><div class="stat">3</div><div class="muted">Ongoing paid and free modules</div></article>
+          <article class="card"><div class="muted">Mock Test Score</div><div class="stat" id="mockScore">78%</div><div class="muted">Latest practice performance</div></article>
+        </section>
+      </section>
+
+      <section class="section" id="guidance"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Career Guidance Panel</h2><p class="muted">Students use CareerSetu for recommendations, counseling, and course discovery.[file:18]</p><div class="toolbar"><button class="btn" id="runAssessment">Run quick assessment</button><button class="btn secondary" id="bookSession">Schedule session</button></div><div class="notice" id="guidanceNotice"></div></article></section>
+
+      <section class="section" id="teachers"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Find Teachers</h2><input class="search" id="teacherSearch" placeholder="Search by subject or mentor name"><div class="list" id="teacherList"><div class="row" data-name="ritika sen maths"><div><strong>Ritika Sen</strong><div class="muted">Maths mentor · 6 years experience</div></div><span class="chip save-teacher" style="cursor:pointer">Save</span></div><div class="row" data-name="arjun paul english"><div><strong>Arjun Paul</strong><div class="muted">English communication trainer</div></div><span class="chip save-teacher" style="cursor:pointer">Save</span></div><div class="row" data-name="neha sharma cuet reasoning"><div><strong>Neha Sharma</strong><div class="muted">CUET reasoning faculty</div></div><span class="chip save-teacher" style="cursor:pointer">Save</span></div></div></article></section>
+
+      <section class="section" id="institutes"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Find Institutes</h2><div class="list"><div class="row"><div><strong>Bright Future Institute</strong><div class="muted">Commerce and BBA pathways</div></div><button class="btn secondary compare-btn">Compare</button></div><div class="row"><div><strong>NextGen Academy</strong><div class="muted">Entrance prep and counseling</div></div><button class="btn secondary compare-btn">Compare</button></div></div><div class="notice" id="instituteNotice"></div></article></section>
+
+      <section class="section" id="courses"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">My Courses</h2><div class="list"><div class="row"><div><strong>CUET Smart Prep</strong><div class="muted">32% completed</div></div><button class="btn secondary continue-course" data-progress="58">Continue</button></div><div class="row"><div><strong>General Aptitude Pack</strong><div class="muted">12 mock tests included</div></div><button class="btn secondary continue-course" data-progress="71">Continue</button></div></div><div class="notice" id="courseNotice"></div></article></section>
+
+      <section class="section" id="tests"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Mock Tests</h2><p class="muted">Competitive exam preparation includes mock tests and analytics.[file:18]</p><div class="toolbar"><button class="btn" id="takeMock">Take mock test</button><button class="btn secondary" id="improveScore">Analyze weak areas</button></div><div class="notice" id="testNotice"></div></article></section>
+    </main>
+  </div>
+  <script>
+    const sections=document.querySelectorAll('.section');
+    const links=document.querySelectorAll('.side-link');
+    links.forEach(btn=>btn.addEventListener('click',()=>{links.forEach(b=>b.classList.remove('active'));btn.classList.add('active');sections.forEach(s=>s.classList.remove('active'));document.getElementById(btn.dataset.section).classList.add('active')}));
+    const studentNotice=document.getElementById('studentNotice');
+    document.getElementById('bookCounseling').onclick=()=>{studentNotice.textContent='Counseling session booked for Tuesday at 5:00 PM.';studentNotice.classList.add('show')};
+    document.getElementById('openCourses').onclick=()=>{links.forEach(b=>b.classList.remove('active'));document.querySelector('[data-section="courses"]').classList.add('active');sections.forEach(s=>s.classList.remove('active'));document.getElementById('courses').classList.add('active')};
+    document.querySelectorAll('.rec-btn').forEach(btn=>btn.onclick=()=>{document.getElementById('matchScore').textContent=btn.dataset.score+'%';document.getElementById('matchBar').style.width=btn.dataset.score+'%';document.getElementById('bestPath').textContent=btn.dataset.path});
+    document.getElementById('runAssessment').onclick=()=>{const score=Math.floor(75+Math.random()*20);document.getElementById('guidanceNotice').textContent='Assessment complete. Your updated recommendation score is '+score+'%.';document.getElementById('guidanceNotice').classList.add('show');document.getElementById('matchScore').textContent=score+'%';document.getElementById('matchBar').style.width=score+'%';};
+    document.getElementById('bookSession').onclick=()=>{const n=document.getElementById('guidanceNotice');n.textContent='Personalized guidance session confirmed.';n.classList.add('show')};
+    document.getElementById('teacherSearch').addEventListener('input',e=>{const q=e.target.value.toLowerCase();document.querySelectorAll('#teacherList .row').forEach(row=>row.style.display=row.dataset.name.includes(q)?'flex':'none')});
+    let saved=12;document.querySelectorAll('.save-teacher').forEach(btn=>btn.onclick=()=>{if(btn.textContent==='Saved')return;btn.textContent='Saved';saved++;document.getElementById('savedTeachers').textContent=saved});
+    document.querySelectorAll('.compare-btn').forEach(btn=>btn.onclick=()=>{const n=document.getElementById('instituteNotice');n.textContent='Institute added to comparison shortlist.';n.classList.add('show')});
+    document.querySelectorAll('.continue-course').forEach(btn=>btn.onclick=()=>{const p=btn.dataset.progress;const n=document.getElementById('courseNotice');n.textContent='Course progress updated to '+p+'% completion.';n.classList.add('show')});
+    document.getElementById('takeMock').onclick=()=>{const score=Math.floor(70+Math.random()*25);document.getElementById('mockScore').textContent=score+'%';const n=document.getElementById('testNotice');n.textContent='Mock test submitted. New score: '+score+'%.';n.classList.add('show')};
+    document.getElementById('improveScore').onclick=()=>{const n=document.getElementById('testNotice');n.textContent='Weak areas identified: reasoning speed, quantitative accuracy, and time management.';n.classList.add('show')};
+    document.getElementById('globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){studentNotice.textContent='Search results loaded for: '+e.target.value;studentNotice.classList.add('show')}});
+  </script>
+<script>
+
+const currentUser =
+JSON.parse(localStorage.getItem('careersetuUser'));
+
+if(currentUser){
+
+  const userName =
+  document.getElementById('dashboard-user-name');
+
+  if(userName){
+
+    userName.innerText = currentUser.name;
+
+  }
+
+}
+
+function logout(){
+
+  localStorage.removeItem('careersetuUser');
+
+  window.location.href =
+  'www.careersetu.com.html';
+
+}
+
+</script>
+</body>
+</html>
