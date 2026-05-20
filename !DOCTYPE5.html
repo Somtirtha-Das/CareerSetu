@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareerSetu</title>
+  <meta name="description" content="CareerSetu is a EdTech marketplace website connecting students, teachers, and institutes with courses, career guidance, jobs, and growth tools." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    /* GLOBAL WEBSITE STYLES */
+    :root,[data-theme="light"]{
+      --text-xs:clamp(.75rem,.72rem + .2vw,.875rem);
+      --text-sm:clamp(.875rem,.83rem + .24vw,1rem);
+      --text-base:clamp(1rem,.96rem + .25vw,1.125rem);
+      --text-lg:clamp(1.125rem,1.03rem + .5vw,1.4rem);
+      --text-xl:clamp(1.65rem,1.25rem + 1vw,2.3rem);
+      --text-2xl:clamp(2.4rem,1.35rem + 3vw,4.9rem);
+      --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;
+      --color-bg:#f4f7fb;--color-surface:#ffffff;--color-surface-2:#eef4ff;--color-surface-offset:#e2ebfa;--color-border:#dbe3f0;--color-divider:#e4ebf5;
+      --color-text:#111827;--color-text-muted:#607089;--color-text-faint:#94a3b8;--color-text-inverse:#f8fbff;
+      --color-primary:#185adb;--color-primary-hover:#0f46ad;--color-primary-highlight:#dbe8ff;--color-secondary:#0f172a;--color-success:#2b7a53;
+      --radius-sm:.55rem;--radius-md:.85rem;--radius-lg:1.2rem;--radius-xl:1.65rem;--radius-full:9999px;
+      --shadow-sm:0 6px 18px rgba(16,24,40,.05);--shadow-md:0 20px 50px rgba(16,24,40,.09);--shadow-lg:0 28px 90px rgba(16,24,40,.13);
+      --font-body:'Manrope',system-ui,sans-serif;--font-display:'Playfair Display',Georgia,serif;
+    }
+    [data-theme="dark"]{
+      --color-bg:#08101d;--color-surface:#0c1525;--color-surface-2:#13213b;--color-surface-offset:#162743;--color-border:#27395a;--color-divider:#20314f;
+      --color-text:#e6eefb;--color-text-muted:#afbdd4;--color-text-faint:#8195b6;--color-text-inverse:#09101d;
+      --color-primary:#77a8ff;--color-primary-hover:#a7c7ff;--color-primary-highlight:#17345d;--color-secondary:#e6eefb;--color-success:#71d09a;
+      --shadow-sm:0 8px 16px rgba(0,0,0,.22);--shadow-md:0 24px 60px rgba(0,0,0,.34);--shadow-lg:0 34px 100px rgba(0,0,0,.4);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{-webkit-text-size-adjust:none;text-size-adjust:none;scroll-behavior:smooth}
+    html, body{ scrollbar-width:none; -ms-overflow-style:none; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar{ display:none; }
+    body{margin:0;min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-size:var(--text-base);line-height:1.6}
+    img,svg{display:block;max-width:100%;height:auto}a{text-decoration:none;color:inherit}button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer;border:none}
+    .skip-link{position:absolute;left:-9999px}.skip-link:focus{left:1rem;top:1rem;z-index:999;background:var(--color-surface);padding:.75rem 1rem;border:1px solid var(--color-border);border-radius:var(--radius-md)}
+    .container{width:min(1180px,calc(100% - 2rem));margin:0 auto}
+    .site-header{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--color-bg) 86%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--color-divider)}
+    .container.nav{display:flex;align-items:center;justify-content:space-between;width:100%;flex-wrap:nowrap;gap:1rem;}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.95rem 0}
+    .brand{display:flex;align-items:center;gap:.85rem;min-width:max-content}
+    .real-logo{width:58px;height:58px;object-fit:contain;border-radius:12px;}
+    .brand-mark{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,var(--color-primary),#4c93ff);display:grid;place-items:center;box-shadow:var(--shadow-sm);color:#fff}
+    .brand-text strong{display:block;font-size:var(--text-sm);font-weight:800}.brand-text span{display:block;font-size:var(--text-xs);color:var(--color-text-muted)}
+    .nav-links{display:flex;gap:.35rem;flex-wrap:wrap;align-items:center;justify-content:center}
+    .nav-links a{padding:.72rem .92rem;border-radius:999px;font-size:var(--text-sm);font-weight:700;color:var(--color-text-muted)}
+    .nav-links a:hover,.nav-links a.active{background:var(--color-surface);color:var(--color-text);box-shadow:var(--shadow-sm)}
+    .nav-links .login-btn:hover,.nav-links .login-btn.active{background:white !important;color:#185adb !important;border:2px solid #185adb;}
+    .nav-links .signup-btn:hover,.nav-links .signup-btn.active{background:#185adb !important;color:white !important;border:2px solid #185adb;}
+    .nav-actions{display:flex;align-items:center;gap:.7rem;flex-wrap:nowrap;white-space:nowrap;}
+    #user-info{font-size:.9rem;font-weight:700;color:var(--color-primary);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+    .nav-btn{padding:.72rem 1.1rem !important;border-radius:14px !important;font-size:var(--text-sm);font-weight:700;display:inline-flex;align-items:center;justify-content:center;transition:.3s ease;text-decoration:none;}
+    .login-btn{border:2px solid #185adb;color:#185adb !important;background:white;}
+    .login-btn:hover{background:#185adb;color:white !important;}
+    .signup-btn{background:#185adb;color:white !important;border:2px solid #185adb;}
+    .signup-btn:hover{background:#0f46ad;border-color:#0f46ad;}
+    .login-btn,.signup-btn{transition:all .3s ease;}
+    .login-btn:hover,.signup-btn:hover{transform:translateY(-4px);}
+    .theme-toggle,.menu-toggle{width:44px;height:44px;border-radius:999px;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-text)}
+    .menu-toggle{display:none}
+    .page{display:none}.page.active{display:block}
+    section{padding:1.5rem 0;}
+    #page-home, #page-courses { padding-top: 0; }
+    .hero{position:relative;padding:1rem 0 2rem;background-image:linear-gradient(rgba(255,255,255,.01),rgba(255,255,255,.01)),url("./images/background.png");background-size:cover;background-position:center;background-repeat:no-repeat;overflow:hidden;}
+    .hero-center{text-align:center;max-width:1000px;margin:auto;padding:2rem;}
+    .hero-center h1{font-family:var(--font-display);font-size:5rem;line-height:1.1;max-width:1400px;margin:auto;color:black !important;text-shadow:none !important;}
+    .btn-primary{background:#2563eb !important;color:white !important;border:none !important;}
+    .hero-center .lead{max-width:950px;margin:auto;margin-top:1.5rem;font-size:1.15rem;color:#4f5f7a !important;}
+    .hero-actions,.pill-row{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;}
+    .hero-actions{margin-top:2rem;}
+    .pill-row{margin-top:2rem;}
+    .hero-panel{margin-top:4rem;max-width:1100px;margin-left:auto;margin-right:auto;}
+    .grid-2,.page-grid,.cta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+    .eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem .85rem;border-radius:999px;background:var(--color-primary-highlight);color:var(--color-primary);font-size:var(--text-xs);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1,h2,h3,h4{margin:0;line-height:1.12}h1{font-family:var(--font-display);font-size:var(--text-2xl);max-width:10.5ch;margin:1rem 0}h2{font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-4)}h3{font-size:1.1rem}
+    p{margin:0}.lead{max-width:66ch;color:var(--color-text-muted)}
+    .pill{padding:.45rem .8rem;border-radius:999px;background:var(--color-surface);border:1px solid var(--color-border);font-size:var(--text-xs);font-weight:700;color:var(--color-text-muted)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:46px;padding:.95rem 1.3rem;border-radius:999px;font-size:var(--text-sm);font-weight:800;transition:.2s ease;border:1px solid transparent}
+    .btn-primary{background:var(--color-primary);color:#fff;box-shadow:var(--shadow-sm)} .btn-primary:hover{background:var(--color-primary-hover);transform:translateY(-1px)}
+    .btn-secondary{background:var(--color-surface);border-color:var(--color-border);color:var(--color-text)} .btn-secondary:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+    .btn-ghost{background:transparent;border-color:var(--color-border);color:var(--color-text-muted)}
+    .card,.hero-panel,.auth-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm)}
+    .card{padding:var(--space-6)} .hero-panel{padding:var(--space-8);box-shadow:var(--shadow-lg);position:relative;overflow:hidden;background:linear-gradient(180deg,var(--color-surface),var(--color-surface-2))}
+    .hero-panel::before{content:"";position:absolute;right:-3rem;top:-3rem;width:12rem;height:12rem;background:radial-gradient(circle,color-mix(in srgb,var(--color-primary) 25%, transparent),transparent 70%)}
+    .section-head{display:flex;justify-content:space-between;gap:1rem;align-items:end;margin-bottom:var(--space-6)}
+    .muted{color:var(--color-text-muted)}
+    .metric{font-size:2rem;font-weight:800;line-height:1;margin-bottom:.5rem}
+    .icon-box{width:3rem;height:3rem;border-radius:1rem;background:var(--color-primary-highlight);display:grid;place-items:center;color:var(--color-primary);font-weight:800;margin-bottom:1rem}
+    .list{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.75rem}.list li{display:flex;align-items:flex-start;gap:.7rem}.list li::before{content:"✓";font-weight:800;color:var(--color-success)}
+    .status{display:inline-flex;align-items:center;gap:.4rem;font-size:var(--text-xs);font-weight:800;color:var(--color-success)}.status::before{content:"";width:.52rem;height:.52rem;border-radius:50%;background:currentColor}
+    .searchbar{width:100%;padding:1rem 1.2rem;border-radius:999px;background:var(--color-surface);border:1px solid var(--color-border);color:var(--color-text);font-size:1.1rem;outline:none;box-sizing:border-box;}
+    .mini-card{background:var(--color-surface-2);border:1px solid var(--color-border);padding:1rem;border-radius:1rem}.mini-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:.9rem}.mini-card strong{display:block;font-size:1.25rem}
+    .price{font-size:1.4rem;font-weight:800;margin:.5rem 0;color:var(--color-primary)}.fee-tag{display:inline-block;padding:.35rem .65rem;border-radius:999px;background:var(--color-primary-highlight);color:var(--color-primary);font-size:var(--text-xs);font-weight:800}
+    .hero::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,.78);}.hero > *{position:relative;z-index:2;}    
+    .feature-banner{background:linear-gradient(135deg,#0f4fb8,var(--color-primary));color:#fff;border-radius:calc(var(--radius-xl) + .2rem);padding:var(--space-8);box-shadow:var(--shadow-lg)}.feature-banner p{color:rgba(255,255,255,.85)}
+    .table-like{display:grid;gap:.85rem;margin-top:1rem}.table-row{display:grid;grid-template-columns:1.4fr .9fr .7fr auto;gap:1rem;align-items:center;padding:1rem;border-radius:1rem;background:var(--color-surface-2);border:1px solid var(--color-border)}
+    .card-accent{background:linear-gradient(180deg,var(--color-primary-highlight),var(--color-surface))}
+    .form-grid,.contact-form{display:grid;gap:1rem}.field{display:grid;gap:.45rem}.field input,.field select,.field textarea{width:100%;padding:1rem 1rem;border-radius:1rem;border:1px solid var(--color-border);background:var(--color-surface-2);color:var(--color-text)}.field textarea{min-height:150px;resize:vertical}
+    .auth-wrap{min-height:calc(100vh - 88px);display:grid;place-items:center;padding:2rem 0}.auth-card{width:min(460px,100%);padding:2rem;background:linear-gradient(180deg,var(--color-surface),var(--color-surface-2))}.auth-card .inline-actions{margin-top:1rem}
+    
+    /* --- UPGRADED FOOTER STYLES --- */
+    .footer-modern {background:linear-gradient(135deg,#072b91,#0d5bdd);padding:4.5rem 0 2rem;margin-top:4rem;color:white;font-family:var(--font-body);}
+    .footer-container {width:min(1180px,calc(100% - 2rem));margin:0 auto;}
+    .footer-grid {display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;text-align:left;margin-bottom:3.5rem;}
+    .footer-brand strong {font-family:'Poppins',sans-serif;font-size:2.2rem;display:block;margin-bottom:0.75rem;line-height:1.2;letter-spacing:0.5px;}
+    .footer-brand p {font-size:1rem;color:rgba(255,255,255,.85);line-height:1.6;margin-bottom:1.5rem;max-width:320px;}
+    .footer-heading {font-size:1.1rem;font-weight:800;margin-bottom:1.5rem;color:#fff;text-transform:uppercase;letter-spacing:0.06em;}
+    .footer-links {list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.9rem;}
+    .footer-links a {color:rgba(255,255,255,.75);text-decoration:none;font-size:0.95rem;transition:all 0.3s ease;display:inline-flex;align-items:center;}
+    .footer-links a::before {content:"→";font-size:0.8rem;margin-right:8px;opacity:0;transform:translateX(-10px);transition:all 0.3s ease;}
+    .footer-links a:hover {color:#fff;transform:translateX(4px);}
+    .footer-links a:hover::before {opacity:1;transform:translateX(0);}
+    .footer-bottom {display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.15);}
+    .footer-left {font-size:0.95rem;color:rgba(255,255,255,.8);}
+    .social-icons {display:flex;flex-direction:row;align-items:center;gap:0.8rem;justify-content:flex-end;}
+    .social-icons a {width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.1);color:white;font-size:1.2rem;text-decoration:none;transition:all 0.3s ease;}
+    .social-icons a:hover {transform:translateY(-4px);background:rgba(255,255,255,.25);box-shadow:0 8px 20px rgba(0,0,0,.15);}
+
+    @media (max-width: 900px) { .footer-grid {grid-template-columns:1fr 1fr;gap:2.5rem;} }
+    @media (max-width: 600px) { .footer-grid {grid-template-columns:1fr;} .footer-bottom {flex-direction:column;text-align:center;justify-content:center;} .social-icons {justify-content:center;width:100%;} }
+    @media (max-width:1040px){.nav-links{display:none;position:absolute;top:76px;left:1rem;right:1rem;background:var(--color-surface);border:1px solid var(--color-border);box-shadow:var(--shadow-md);padding:1rem;border-radius:var(--radius-xl);flex-direction:column;align-items:stretch}.nav-links.open{display:flex}.menu-toggle{display:inline-grid;place-items:center}}
+    @media (max-width:900px){.hero-grid,.grid-2,.grid-3,.grid-4,.cta-grid,.page-grid{grid-template-columns:1fr}.mini-kpis{grid-template-columns:1fr}.table-row{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}}
+
+    /* --- SCOPED COURSES STYLES --- */
+    .courses-scope {
+      --surface-soft:#f0f5ff;
+      --line:#dbe6ff;
+      --primary-dark:#0b3fb5;
+      --radius-xl:28px;
+      --radius-lg:22px;
+      --radius-md:16px;
+      --radius-sm:12px;
+      font-family:'Inter',sans-serif;
+      text-align: left;
+    }
+    .courses-scope .shell { max-width:1280px; margin:0 auto; padding:0px 22px 60px; }
+    .courses-scope .course-hero { display:grid; grid-template-columns:1.1fr .9fr; gap:22px; margin-top:0; padding-top:0; }
+    .courses-scope .card-base { background:rgba(255,255,255,.82); backdrop-filter:blur(12px); border:1px solid rgba(219,230,255,.9); border-radius:var(--radius-xl); box-shadow:0 24px 60px rgba(15,23,42,.10); }
+    .courses-scope .hero-main { padding:32px; position:relative; overflow:hidden; background:linear-gradient(135deg,#09152c,#165dff); }
+    .courses-scope .hero-main::after { content:""; position:absolute; right:-50px; top:-20px; width:220px; height:220px; border-radius:36px; background:rgba(255,255,255,.09); transform:rotate(18deg); }
+    .courses-scope .hero-main h1 { margin:12px 0 12px; font-size:48px; line-height:1.02; color:#fff; max-width:760px; font-family:'Inter',sans-serif; }
+    .courses-scope .hero-main p { color:rgba(255,255,255,.84); font-size:16px; max-width:650px; }
+    .courses-scope .course-eyebrow { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.10); color:#fff; font-weight:700; font-size:13px; text-transform:none; letter-spacing:normal; }
+    .courses-scope .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
+    .courses-scope .c-btn { padding:13px 18px; border-radius:999px; font-weight:800; transition:.25s ease; display:inline-flex; align-items:center; justify-content:center; gap:8px; border:none; cursor:pointer; }
+    .courses-scope .c-btn:hover { transform:translateY(-2px); }
+    .courses-scope .c-btn-primary { background:#fff; color:#0b3fb5; }
+    .courses-scope .c-btn-soft { background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.18); }
+    .courses-scope .hero-side { padding:28px; display:grid; gap:16px; }
+    .courses-scope .metric-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+    .courses-scope .c-metric { padding:18px; border-radius:20px; background:var(--surface-soft); border:1px solid var(--line); }
+    .courses-scope .c-metric strong { display:block; font-size:30px; margin-bottom:4px; line-height:1; }
+    .courses-scope .c-section-head { display:flex; justify-content:space-between; align-items:end; gap:18px; margin:34px 0 18px; }
+    .courses-scope .c-section-head h2 { margin:0; font-size:32px; font-family:'Inter',sans-serif; }
+    .courses-scope .c-section-head p { margin:0; color:var(--muted); max-width:680px; }
+    .courses-scope .course-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .courses-scope .course-card { padding:20px; display:grid; gap:16px; transition:.28s ease; position:relative; overflow:hidden; }
+    .courses-scope .course-card:hover { transform:translateY(-8px); box-shadow:0 30px 70px rgba(22,93,255,.12); }
+    .courses-scope .course-card::before { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(255,255,255,0),rgba(22,93,255,.03)); pointer-events:none; }
+    .courses-scope .banner { height:180px; border-radius:22px; overflow:hidden; position:relative; padding:20px; display:flex; align-items:flex-end; color:#fff; }
+    .courses-scope .banner::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.34)); }
+    .courses-scope .banner > * { position:relative; z-index:1; }
+    .courses-scope .grad-1 { background:linear-gradient(135deg,#0f172a,#165dff); }
+    .courses-scope .grad-2 { background:linear-gradient(135deg,#1b2540,#7c3aed); }
+    .courses-scope .grad-3 { background:linear-gradient(135deg,#052b20,#0f9d70); }
+    .courses-scope .grad-4 { background:linear-gradient(135deg,#3b1200,#ff7a00); }
+    .courses-scope .grad-5 { background:linear-gradient(135deg,#3a0d2e,#ec4899); }
+    .courses-scope .grad-6 { background:linear-gradient(135deg,#10213d,#14b8a6); }
+    .courses-scope .course-meta { display:flex; flex-wrap:wrap; gap:10px; }
+    .courses-scope .c-pill { padding:8px 12px; border-radius:999px; background:var(--surface-soft); border:1px solid var(--line); font-size:13px; font-weight:700; color:#24406d; }
+    .courses-scope .course-card h3 { margin:0; font-size:22px; line-height:1.2; font-family:'Inter',sans-serif; }
+    .courses-scope .course-card p { margin:0; color:var(--muted); font-size:14px; line-height:1.6; }
+    .courses-scope .split { display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .courses-scope .c-price { font-size:24px; font-weight:800; }
+    .courses-scope .rating { display:flex; align-items:center; gap:8px; font-weight:700; color:#384a68; }
+    .courses-scope .c-actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .courses-scope .btn-outline { background:#fff; border:1px solid var(--line); color:#18345b; }
+    .courses-scope .btn-solid { background:#165dff; color:#fff; }
+    .courses-scope .btn-solid:hover { background:var(--primary-dark); }
+    
+    /* Modals */
+    .courses-scope .modal-wrap { position:fixed; inset:0; background:rgba(5,15,40,.58); backdrop-filter:blur(12px); display:none; align-items:center; justify-content:center; padding:24px; z-index:1000; opacity:0; transition:opacity .28s ease; }
+    .courses-scope .modal-wrap.active { display:flex; opacity:1; }
+    .courses-scope .modal { width:min(1180px,100%); max-height:92vh; overflow:auto; background:#fff; border:1px solid rgba(219,230,255,.88); border-radius:32px; box-shadow:0 40px 100px rgba(15,23,42,.22); transform:translateY(18px) scale(.98); transition:transform .28s ease; scrollbar-width:thin; }
+    .courses-scope .modal-wrap.active .modal { transform:translateY(0) scale(1); }
+    .courses-scope .modal-header { padding:20px 22px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:18px; position:sticky; top:0; background:rgba(255,255,255,.88); backdrop-filter:blur(10px); z-index:5; }
+    .courses-scope .close-btn { width:42px; height:42px; border-radius:50%; background:var(--surface-soft); color:#0f172a; font-size:22px; border:none; cursor:pointer; }
+    .courses-scope .detail-hero { padding:26px; display:grid; grid-template-columns:1.12fr .88fr; gap:20px; }
+    .courses-scope .detail-banner { min-height:320px; border-radius:28px; padding:26px; display:flex; flex-direction:column; justify-content:flex-end; position:relative; overflow:hidden; color:#fff; }
+    .courses-scope .detail-banner::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.45)); }
+    .courses-scope .detail-banner > * { position:relative; z-index:1; }
+    .courses-scope .detail-banner h2 { font-size:40px; line-height:1.05; margin:10px 0 10px; max-width:650px; font-family:'Inter',sans-serif; }
+    .courses-scope .detail-banner p { max-width:640px; color:rgba(255,255,255,.86); margin:0; }
+    .courses-scope .detail-side { display:grid; gap:16px; }
+    .courses-scope .info-card { padding:22px; border:1px solid var(--line); border-radius:24px; background:#fff; box-shadow:0 18px 44px rgba(15,23,42,.06); }
+    .courses-scope .price-box { background:linear-gradient(180deg,#f6f9ff,#edf4ff); }
+    .courses-scope .price-box .amount { font-size:40px; font-weight:800; margin:8px 0; }
+    .courses-scope .tiny { font-size:13px; color:var(--muted); }
+    .courses-scope .detail-grid { padding:0 26px 28px; display:grid; grid-template-columns:1.2fr .8fr; gap:20px; }
+    .courses-scope .stack { display:grid; gap:18px; }
+    .courses-scope .content-card { padding:24px; border-radius:26px; border:1px solid var(--line); background:#fff; box-shadow:0 18px 44px rgba(15,23,42,.05); }
+    .courses-scope .content-card h3 { margin:0 0 14px; font-size:24px; font-family:'Inter',sans-serif; }
+    .courses-scope .description { color:#475569; line-height:1.75; }
+    .courses-scope .feature-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+    .courses-scope .feature-item, .courses-scope .module-item, .courses-scope .faq-item, .courses-scope .review-card, .courses-scope .support-card, .courses-scope .related-card, .courses-scope .stat-card { padding:14px 16px; border-radius:18px; background:var(--surface-soft); border:1px solid var(--line); transition:.25s ease; }
+    .courses-scope .feature-item:hover, .courses-scope .module-item:hover, .courses-scope .related-card:hover, .courses-scope .stat-card:hover { transform:translateY(-3px); }
+    .courses-scope .feature-item strong, .courses-scope .module-item strong, .courses-scope .review-card strong, .courses-scope .related-card strong, .courses-scope .support-card strong { display:block; margin-bottom:6px; }
+    .courses-scope .module-list, .courses-scope .faq-list, .courses-scope .review-list, .courses-scope .related-list, .courses-scope .stat-list { display:grid; gap:12px; }
+    .courses-scope .faq-item details { cursor:pointer; }
+    .courses-scope .faq-item summary { list-style:none; font-weight:700; display:flex; justify-content:space-between; align-items:center; }
+    .courses-scope .faq-item summary::-webkit-details-marker { display:none; }
+    .courses-scope .faq-item p { margin:12px 0 0; color:#55657f; line-height:1.7; }
+    .courses-scope .review-top { display:flex; justify-content:space-between; gap:10px; align-items:center; margin-bottom:10px; }
+    .courses-scope .stars { letter-spacing:1px; color:#f59e0b; font-size:15px; }
+    .courses-scope .enroll-btn { width:100%; padding:15px 18px; border-radius:16px; background:linear-gradient(135deg,#165dff,#497fff); color:#fff; font-weight:800; border:none; cursor:pointer; }
+    .courses-scope .enroll-btn:hover { filter:brightness(1.04); transform:translateY(-2px); }
+    .courses-scope .support-card { background:linear-gradient(180deg,#f8fbff,#f3f7ff); }
+    .courses-scope .highlight-list { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+    .courses-scope .highlight { padding:14px 15px; border-radius:18px; background:#0f172a; color:#fff; transition:.25s ease; }
+    .courses-scope .highlight:hover { transform:translateY(-3px); }
+    .courses-scope .cert-box { padding:16px 18px; border-radius:20px; background:linear-gradient(135deg,#eff5ff,#ffffff); border:1px dashed #b7cbff; }
+    .courses-scope .related-list { grid-template-columns:1fr; }
+    .courses-scope .related-card .mini-btn { margin-top:10px; padding:10px 14px; border-radius:999px; background:#fff; border:1px solid var(--line); font-weight:700; cursor:pointer; }
+    
+    @media (max-width:1100px){
+      .courses-scope .course-hero, .courses-scope .detail-hero, .courses-scope .detail-grid, .courses-scope .course-grid { grid-template-columns:1fr 1fr; }
+      .courses-scope .detail-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:860px){
+      .courses-scope .course-hero, .courses-scope .course-grid, .courses-scope .detail-hero, .courses-scope .feature-grid, .courses-scope .highlight-list, .courses-scope .metric-grid { grid-template-columns:1fr; }
+      .courses-scope .hero-main h1 { font-size:38px; }
+      .courses-scope .detail-banner h2 { font-size:30px; }
+      .courses-scope .modal { border-radius:24px; max-height:95vh; }
+      .courses-scope .detail-hero, .courses-scope .detail-grid { padding-left:18px; padding-right:18px; }
+      .courses-scope .modal-header { padding:16px 18px; }
+    }
+    @media (max-width:560px){
+      .courses-scope .shell { padding:20px 14px 40px; }
+      .courses-scope .hero-main, .courses-scope .hero-side, .courses-scope .course-card, .courses-scope .content-card, .courses-scope .info-card { padding:18px; }
+      .courses-scope .detail-banner { min-height:250px; padding:18px; }
+      .courses-scope .c-section-head { align-items:flex-start; flex-direction:column; }
+      .courses-scope .c-actions, .courses-scope .hero-actions { flex-direction:column; }
+      .courses-scope .c-btn { width:100%; }
+    }
+
+
+    /* --- SCOPED DASHBOARD STYLES --- */
+    
+    /* Student Dashboard Scope */
+    .std-scope { --bg:#f4f7fb; --surface:#fff; --surface2:#edf3ff; --text:#101827; --muted:#64748b; --border:#dbe4f0; --primary:#165ddb; --primary2:#dce9ff; --success:#23704b; --danger:#b42318; --shadow:0 18px 45px rgba(15,23,42,.08); --radius:22px; background:var(--bg); color:var(--text); text-align: left; }
+    .std-scope .app{display:grid;grid-template-columns:270px 1fr;min-height:100vh}
+    .std-scope .sidebar{background:#0d1730;color:#eef4ff;padding:24px;display:grid;grid-template-rows:auto auto 1fr auto;gap:24px}
+    .std-scope .brand{display:flex;gap:12px;align-items:center}
+    .std-scope .logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#1d66ea,#65a1ff);display:grid;place-items:center;font-weight:800}
+    .std-scope .side-group{display:grid;gap:10px}
+    .std-scope .side-link{padding:12px 14px;border-radius:14px;color:#bdd0f2;background:transparent;border:none;text-align:left;cursor:pointer;font-family:inherit;}
+    .std-scope .side-link.active, .std-scope .side-link:hover{background:rgba(255,255,255,.08);color:#fff}
+    .std-scope .upgrade{padding:18px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08)}
+    .std-scope .main{padding:24px}
+    .std-scope .topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:24px}
+    .std-scope .search{flex:1;max-width:520px;padding:14px 18px;border-radius:999px;border:1px solid var(--border);background:var(--surface)}
+    .std-scope .profile{display:flex;gap:12px;align-items:center}
+    .std-scope .avatar{width:46px;height:46px;border-radius:50%;background:#cfe0ff;display:grid;place-items:center;font-weight:800;color:#0f3e94}
+    .std-scope .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-bottom:18px; background: none;}
+    .std-scope .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .std-scope .hero-card{background:linear-gradient(135deg,#114db8,#2a73ff);color:#fff;position:relative;overflow:hidden}
+    .std-scope .hero-card p{color:rgba(255,255,255,.82)}
+    .std-scope .hero-card::after{content:"";position:absolute;right:-30px;bottom:-30px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.08)}
+    .std-scope .grid-4, .std-scope .grid-3, .std-scope .grid-2{display:grid;gap:18px}
+    .std-scope .grid-4{grid-template-columns:repeat(4,1fr)} .std-scope .grid-3{grid-template-columns:repeat(3,1fr)} .std-scope .grid-2{grid-template-columns:repeat(2,1fr)}
+    .std-scope .stat{font-size:30px;font-weight:800} .std-scope .muted{color:var(--muted)}
+    .std-scope .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--primary2);color:var(--primary);font-size:12px;font-weight:800}
+    .std-scope .list{display:grid;gap:12px;margin-top:14px}
+    .std-scope .row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:14px;border-radius:16px;background:var(--surface2)}
+    .std-scope .progress{height:10px;border-radius:999px;background:#dfe8f7;overflow:hidden}
+    .std-scope .progress > span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--primary),#69a0ff);transition:.35s ease}
+    .std-scope .btn{padding:12px 16px;border-radius:999px;border:none;background:var(--primary);color:#fff;font-weight:800; cursor:pointer;}
+    .std-scope .btn.secondary{background:var(--surface2);color:var(--text);border:1px solid var(--border)}
+    .std-scope .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .std-scope .section{display:none} .std-scope .section.active{display:block}
+    .std-scope .notice{margin-top:14px;padding:12px 14px;border-radius:14px;background:#eff8f1;color:var(--success);font-weight:700;display:none}
+    .std-scope .notice.show{display:block}
+    @media (max-width:1100px){.std-scope .app{grid-template-columns:1fr} .std-scope .sidebar{display:none} .std-scope .hero, .std-scope .grid-4, .std-scope .grid-3, .std-scope .grid-2{grid-template-columns:1fr}}
+
+    /* Teacher Dashboard Scope */
+    .tch-scope { --bg:#fffaf5; --surface:#ffffff; --surface2:#fff2e3; --text:#1b140f; --muted:#7d6654; --border:#eedfce; --primary:#c76816; --primary2:#ffe2c2; --green:#2e7a4d; --shadow:0 18px 45px rgba(79,45,14,.08); --radius:22px; background:var(--bg); color:var(--text); text-align: left; }
+    .tch-scope .layout{display:grid;grid-template-columns:94px 1fr;min-height:100vh}
+    .tch-scope .rail{background:#21150d;color:#f8eee4;padding:20px 16px;display:flex;flex-direction:column;align-items:center;gap:18px}
+    .tch-scope .rail .dot{width:54px;height:54px;border-radius:18px;background:linear-gradient(135deg,#cf761d,#ffb868);display:grid;place-items:center;font-weight:800}
+    .tch-scope .rail button{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.06);color:#eedfce;border:none; cursor:pointer;}
+    .tch-scope .rail button.active, .tch-scope .rail button:hover{background:rgba(255,255,255,.14);color:#fff}
+    .tch-scope .main{padding:24px 28px}
+    .tch-scope .top{display:flex;justify-content:space-between;gap:16px;align-items:center}
+    .tch-scope .title p{color:var(--muted);margin:6px 0 0}
+    .tch-scope .actions{display:flex;gap:10px;align-items:center}
+    .tch-scope .search{padding:14px 16px;border-radius:999px;border:1px solid var(--border);min-width:280px;background:var(--surface)}
+    .tch-scope .btn{padding:12px 16px;border-radius:999px;font-weight:800; border:none; cursor:pointer;}
+    .tch-scope .btn.primary{background:var(--primary);color:#fff}
+    .tch-scope .btn.soft{background:var(--surface2);color:var(--text);border:1px solid var(--border)}
+    .tch-scope .hero, .tch-scope .grid-3, .tch-scope .grid-2{display:grid;gap:18px}
+    .tch-scope .hero{grid-template-columns:1.05fr .95fr;margin-top:22px; background: none;}
+    .tch-scope .grid-3{grid-template-columns:repeat(3,1fr)} .tch-scope .grid-2{grid-template-columns:repeat(2,1fr)}
+    .tch-scope .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .tch-scope .accent{background:linear-gradient(135deg,#8f4506,#cf761d);color:#fff;position:relative;overflow:hidden}
+    .tch-scope .accent p{color:rgba(255,255,255,.84)}
+    .tch-scope .accent::after{content:"";position:absolute;inset:auto -20px -30px auto;width:140px;height:140px;border-radius:28px;background:rgba(255,255,255,.08);transform:rotate(18deg)}
+    .tch-scope .muted{color:var(--muted)} .tch-scope .metric{font-size:30px;font-weight:800}
+    .tch-scope .table{display:grid;gap:12px;margin-top:14px}
+    .tch-scope .row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px;border-radius:16px;background:var(--surface2)}
+    .tch-scope .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--primary2);color:var(--primary);font-size:12px;font-weight:800}
+    .tch-scope .progress{height:10px;border-radius:999px;background:#f3dfcb;overflow:hidden}
+    .tch-scope .progress span{display:block;height:100%;background:linear-gradient(90deg,var(--primary),#ffb15a);transition:.35s ease}
+    .tch-scope .panel{display:none} .tch-scope .panel.active{display:block}
+    .tch-scope .notice{margin-top:14px;padding:12px 14px;border-radius:14px;background:#fff4e8;color:#8f4506;font-weight:700;display:none}
+    .tch-scope .notice.show{display:block}
+    @media (max-width:1000px){.tch-scope .layout{grid-template-columns:1fr} .tch-scope .rail{display:none} .tch-scope .hero, .tch-scope .grid-3, .tch-scope .grid-2{grid-template-columns:1fr} .tch-scope .top{flex-direction:column;align-items:flex-start} .tch-scope .search{min-width:0;width:100%}}
+
+    /* Institute Dashboard Scope */
+    .inst-scope { --bg:#f4faf6; --surface:#fff; --surface2:#eaf8ef; --text:#102117; --muted:#62806e; --border:#d7ebde; --primary:#1d8b4f; --primary2:#dff5e7; --accent:#0f172a; --shadow:0 18px 45px rgba(19,60,36,.08); --radius:22px; background:var(--bg); color:var(--text); text-align: left;}
+    .inst-scope .shell{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
+    .inst-scope .sidebar{background:#0d1f14;color:#ecfff3;padding:24px;display:grid;grid-template-rows:auto auto 1fr auto;gap:22px}
+    .inst-scope .brand{display:flex;gap:12px;align-items:center}
+    .inst-scope .badge{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,#239654,#69d892);display:grid;place-items:center;font-weight:800}
+    .inst-scope .nav{display:grid;gap:10px}
+    .inst-scope .nav button{color:#b9dcc4;padding:12px 14px;border-radius:14px;background:transparent;border:none;text-align:left; cursor:pointer;}
+    .inst-scope .nav button.active, .inst-scope .nav button:hover{background:rgba(255,255,255,.08);color:#fff}
+    .inst-scope .note{padding:18px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+    .inst-scope .main{padding:24px}
+    .inst-scope .top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:20px}
+    .inst-scope .search{padding:14px 18px;border-radius:999px;border:1px solid var(--border);min-width:320px;background:var(--surface)}
+    .inst-scope .btn{padding:12px 16px;border-radius:999px;font-weight:800; border:none; cursor:pointer;}
+    .inst-scope .btn.primary{background:var(--primary);color:#fff}
+    .inst-scope .btn.soft{background:var(--surface2);border:1px solid var(--border)}
+    .inst-scope .hero, .inst-scope .grid-4, .inst-scope .grid-3, .inst-scope .grid-2{display:grid;gap:18px}
+    .inst-scope .hero{grid-template-columns:1.15fr .85fr; background:none;}
+    .inst-scope .grid-4{grid-template-columns:repeat(4,1fr)} .inst-scope .grid-3{grid-template-columns:repeat(3,1fr)} .inst-scope .grid-2{grid-template-columns:repeat(2,1fr)}
+    .inst-scope .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .inst-scope .dark-card{background:linear-gradient(135deg,#123621,#1d8b4f);color:#fff;position:relative;overflow:hidden}
+    .inst-scope .dark-card p{color:rgba(255,255,255,.84)}
+    .inst-scope .dark-card::after{content:"";position:absolute;right:-20px;top:-20px;width:120px;height:120px;background:rgba(255,255,255,.08);border-radius:28px;transform:rotate(24deg)}
+    .inst-scope .muted{color:var(--muted)} .inst-scope .metric{font-size:30px;font-weight:800}
+    .inst-scope .table{display:grid;gap:12px;margin-top:14px}
+    .inst-scope .row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px;border-radius:16px;background:var(--surface2)}
+    .inst-scope .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--primary2);color:var(--primary);font-size:12px;font-weight:800}
+    .inst-scope .progress{height:10px;border-radius:999px;background:#d9ecdf;overflow:hidden}
+    .inst-scope .progress span{display:block;height:100%;background:linear-gradient(90deg,var(--primary),#6fd38f);transition:.35s ease}
+    .inst-scope .panel{display:none} .inst-scope .panel.active{display:block}
+    .inst-scope .notice{margin-top:14px;padding:12px 14px;border-radius:14px;background:#eefbf2;color:#1d8b4f;font-weight:700;display:none}
+    .inst-scope .notice.show{display:block}
+    @media (max-width:1100px){.inst-scope .shell{grid-template-columns:1fr} .inst-scope .sidebar{display:none} .inst-scope .hero, .inst-scope .grid-4, .inst-scope .grid-3, .inst-scope .grid-2{grid-template-columns:1fr} .inst-scope .top{flex-direction:column;align-items:flex-start} .inst-scope .search{min-width:0;width:100%}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav">
+    <a class="brand" href="#home" data-route="home" aria-label="CareerSetu home">
+      <img src="images/logo.png" class="real-logo" alt="CareerSetu Logo">
+      <span class="brand-text">
+      <strong><span style="color: #2A3B8C; display: inline; font-size: inherit;">Career</span><span style="color: #6272C2; display: inline; font-size: inherit">Setu</span></strong>
+      <span>Bridge to Your Future</span>
+      </span>
+    </a>
+      <nav class="nav-links" id="navMenu" aria-label="Primary">
+        <a href="#home" data-route="home" class="active">Home</a>
+        <a href="#students" data-route="students" style="display: none;">Students</a>
+        <a href="#teachers" data-route="teachers" style="display: none;">Teachers</a>
+        <a href="#institutes" data-route="institutes" style="display: none;">Institutes</a>
+        <a href="#courses" data-route="courses">Courses</a>
+        <a href="#contact" data-route="contact">Contact</a>
+  
+       <a href="#login" id="login-link" data-route="login" class="nav-btn login-btn">Login</a>
+        <a href="#signup" id="signup-link" data-route="signup" class="nav-btn signup-btn">Sign Up</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+        <span id="user-info" style="font-weight:700;color:var(--color-primary);margin-right:1rem;"></span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch color theme">☾</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page active" id="page-home">
+     
+      <div class="hero">
+        <div class="container hero-center">
+          <span class="eyebrow">EDTECH MARKETPLACE</span>
+          <h1>One Platform for Education</h1>
+          <p class="lead">We seamlessly connect students, teachers, and institutions — empowering every learner's journey with discovery, mentorship and growth.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#students" data-route="students">Explore student tools</a>
+       
+            <a class="btn btn-secondary" href="#courses" data-route="courses">Browse courses</a>
+          </div>
+          <div class="pill-row">
+            <span class="pill">Career Recommendations</span>
+            <span class="pill">Teacher Marketplace</span>
+            <span class="pill">Institute Advertising</span>
+            <span class="pill">Competitive Exams</span>
+          </div>
+   
+        </div>
+      </div>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Why choose CareerSetu</span>
+              <h2>A complete ecosystem instead of separate platforms</h2>
+            </div>
+  
+           <p class="lead">CareerSetu as an all-in-one ecosystem using data-driven recommendations and network effects to create value for all user groups.</p>
+          </div>
+          <div class="grid-3">
+            <article class="card"><div class="icon-box">01</div><h3>Clarity for students</h3><p class="muted">Career recommendations, course discovery, and counseling help students make informed decisions.</p></article>
+            <article class="card"><div class="icon-box">02</div><h3>Growth for teachers</h3><p class="muted">Teachers can find jobs, connect with learners, and monetize educational content through the platform.</p></article>
+            <article class="card"><div class="icon-box">03</div><h3>Reach for institutes</h3><p class="muted">Institutes gain advertising visibility, student leads, and recruitment tools in one place.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container feature-banner">
+          <div class="cta-grid">
+            <div>
+   
+            <span class="eyebrow" style="background:rgba(255,255,255,.16);color:#fff">Positioning</span>
+              <h2 style="color:#fff">Built for the modern Indian education journey</h2>
+              <p>CareerSetu’s market opportunity is supported by rising higher-education demand, strong digital adoption, and India’s large student population.</p>
+            </div>
+            <div class="card" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);color:#fff">
+          
+     <ul class="list" style="margin-top:0">
+                <li>Personalized learning and guidance model.</li>
+                <li>Competitive exam preparation offerings.</li>
+                <li>Teacher-led and platform-led course catalog.</li>
+                <li>Recruitment and lead-generation support for institutes.</li>
+              
+</ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-students">
+        <div class="container"><span class="eyebrow">Students page</span><h2>Services built for students</h2><p class="lead">Helping students make smarter academic and career decisions through guidance, learning, and real opportunities.</p><div class="page-grid" style="margin-top:2rem"><article class="card"><h3>Student services</h3><ul class="list"><li>Career recommendations matched to interests and strengths.</li><li>College and course discovery workflows.</li><li>Personalized guidance and counseling sessions.</li><li>Competitive exam preparation with concept videos and mock tests.</li></ul></article><article class="card card-accent"><h3>Quick search panel</h3><p class="muted">Search for teachers, institutes, and courses with fees.</p><div class="form-grid" style="margin-top:1rem"><div class="field"><label>Search category</label><select><option>Teachers</option><option>Institutes</option><option>Courses</option></select></div><div class="field"><label>Keyword</label><input type="text" placeholder="Search maths teacher, BBA college, NEET course"></div><div class="field"><label>Budget range</label><select><option>Under ₹2,000</option><option>₹2,000 - ₹5,000</option><option>₹5,000 - ₹10,000</option><option>Above ₹10,000</option></select></div><button class="btn btn-primary" type="button">Search now</button></div></article></div><div class="card" style="margin-top:1rem"><h3>Search results preview</h3><div class="table-like"><div class="table-row"><div><strong>Ritika Sen</strong><br><span class="muted">Mathematics Mentor, 6 years experience</span></div><div>Teacher</div><div class="fee-tag">₹1,800 / month</div><button class="btn btn-secondary" type="button">View Profile</button></div><div class="table-row"><div><strong>Bright Future Institute</strong><br><span class="muted">Commerce, BBA, CA Foundation support</span></div><div>Institute</div><div class="fee-tag">₹12,500 / semester</div><button class="btn btn-secondary" type="button">Explore</button></div><div class="table-row"><div><strong>CareerSetu CUET Prep</strong><br><span class="muted">Recorded + live classes + mock tests</span></div><div>Course</div><div class="fee-tag">₹4,999</div><button class="btn btn-secondary" type="button">Enroll</button></div></div></div></div>
+    </section>
+
+    <section class="page" id="page-teachers">
+     
+        <div class="container"><span class="eyebrow">Teachers page</span><h2>Opportunities and tools for educators</h2><p class="lead">Connecting talented educators with students, institutes, and meaningful teaching opportunities.</p><div class="grid-3" style="margin-top:2rem"><article class="card"><div class="icon-box">J</div><h3>Job marketplace</h3><p class="muted">Teachers can discover institute jobs and tutoring roles matched to their subject expertise.</p></article><article class="card"><div class="icon-box">C</div><h3>Course uploading</h3><p class="muted">Educators can upload recorded or structured courses and earn through platform sales.</p></article><article class="card"><div class="icon-box">T</div><h3>Tuition matching</h3><p class="muted">Teachers can connect with students seeking subject-specific guidance and support.</p></article></div><div class="page-grid" style="margin-top:1rem"><article class="card"><h3>Open institute jobs</h3><div class="table-like"><div class="table-row"><div><strong>Physics Faculty</strong><br><span class="muted">Nava Learning Institute, Kolkata</span></div><div>Full-time</div><div class="fee-tag">₹28k / month</div><button class="btn btn-secondary">Apply</button></div><div class="table-row"><div><strong>English Communication Trainer</strong><br><span class="muted">FuturePath Academy</span></div><div>Part-time</div><div class="fee-tag">₹14k / month</div><button class="btn btn-secondary">Apply</button></div></div></article><article class="card"><h3>Upload your course</h3><div class="form-grid"><div class="field"><label>Course title</label><input type="text" placeholder="Advanced Accounts for BBA"></div><div class="field"><label>Category</label><select><option>Academic</option><option>Competitive Exam</option><option>Skill-based</option></select></div><div class="field"><label>Price</label><input type="text" placeholder="₹2999"></div><button class="btn btn-primary" type="button">Upload course</button></div></article></div></div>
+    </section>
+
+    <section class="page" id="page-institutes">
+        <div class="container"><span class="eyebrow">Institutes page</span><h2>Lead generation, advertising, and hiring support</h2><p class="lead">Transform your institute’s digital presence by connecting with students, showcasing programs, and driving smarter admissions through CareerSetu.</p><div class="grid-3" style="margin-top:2rem"><article class="card"><h3>Advertise to students</h3><p class="muted">Institutes can run targeted course listings and featured promotions to improve visibility.</p></article><article class="card"><h3>Generate leads</h3><p class="muted">The platform helps institutes connect with interested candidates through structured inquiry flows.</p></article><article class="card"><h3>Hire teachers</h3><p class="muted">Institutes can post vacancies and recruit qualified educators through the marketplace.</p></article></div><div class="page-grid" style="margin-top:1rem"><article class="card card-accent"><h3>Institute campaign panel</h3><div class="form-grid"><div class="field"><label>Institute name</label><input type="text" placeholder="Enter institute name"></div><div class="field"><label>Campaign type</label><select><option>Student lead campaign</option><option>Featured ad listing</option><option>Teacher recruitment</option></select></div><div class="field"><label>Budget</label><input type="text" placeholder="₹10,000"></div><button class="btn btn-primary" type="button">Launch campaign</button></div></article><article class="card"><h3>Hiring board preview</h3><ul class="list"><li>Post openings for subject experts and faculty members.</li><li>Shortlist candidates by experience and specialization.</li><li>Run campus recruitment and digital outreach campaigns.</li><li>Track interested applicants inside one dashboard.</li></ul></article></div></div>
+    </section>
+
+    <section class="page" id="page-courses">
+      <div class="courses-scope">
+        <div class="shell">
+          <section class="course-hero">
+            <div class="card-base hero-main">
+              <div class="course-eyebrow">Production-level course experience</div>
+              <h1>Explore premium career-ready programs with rich detail pages and seamless enrollment flow.</h1>
+              <p>Every course card now opens a dynamic details experience with syllabus, reviews, mentor support, pricing, FAQs, certificate information, and related learning paths.</p>
+              <div class="hero-actions">
+                <a class="c-btn c-btn-primary" href="#courseGrid">Browse Courses</a>
+                <a class="c-btn c-btn-soft" href="#why">See platform highlights</a>
+              </div>
+            </div>
+            <div class="card-base hero-side">
+              <div class="metric-grid">
+                <div class="c-metric"><strong>4.8/5</strong><span class="tiny">Average learner satisfaction</span></div>
+                <div class="c-metric"><strong>18k+</strong><span class="tiny">Active learners across tracks</span></div>
+                <div class="c-metric"><strong>120+</strong><span class="tiny">Mock tests & evaluated assignments</span></div>
+                <div class="c-metric"><strong>24/7</strong><span class="tiny">Mentor and support assistance</span></div>
+              </div>
+              <div class="content-card" id="why">
+                <h3>Designed for CareerSetu</h3>
+                <p class="description">The layout uses the premium blue-first visual language, rounded cards, and a dashboard-inspired structure so the course detail flow feels like a natural extension of the CareerSetu product.</p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <div class="c-section-head">
+              <div>
+                <h2>Featured courses</h2>
+                <p>Click any Details button to open the complete course information modal dynamically. Each course has its own content, syllabus, pricing, reviews, FAQs, and support section.</p>
+              </div>
+            </div>
+            <div class="course-grid" id="courseGrid"></div>
+          </section>
+        </div>
+
+        <div class="modal-wrap" id="courseModalWrap" aria-hidden="true">
+          <div class="modal" role="dialog" aria-modal="true" aria-labelledby="courseModalTitle">
+            <div class="modal-header">
+              <div>
+                <div class="tiny">Course details</div>
+                <strong id="courseModalTitle">Course</strong>
+              </div>
+              <button class="close-btn" id="closeModal" aria-label="Close dialog">×</button>
+            </div>
+            <div id="modalContent"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-contact">
+    
+         <div class="container page-grid"><article><span class="eyebrow">Contact page</span><h2>Contact CareerSetu</h2><p class="lead">Have questions, ideas, or collaboration opportunities? Reach out to CareerSetu and become part of the evolving education ecosystem.</p><div class="card" style="margin-top:1rem"><h3>Get in touch</h3><ul class="list"><li>Email: contact@careersetu.in</li><li>Support hours: Monday to Saturday, 10 AM to 7 PM</li><li>Enquiries: student guidance, teacher onboarding, institute partnerships</li></ul></div></article><article class="card"><h3>Send an enquiry</h3><form class="contact-form"><div class="field"><label for="name">Full name</label><input id="name" type="text" placeholder="Enter your full name"></div><div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="Enter your email"></div><div class="field"><label for="type">I am a</label><select id="type"><option value="student">Student</option><option>Teacher</option><option>Institute representative</option><option>Parent</option></select></div><div class="field"><label for="message">Message</label><textarea id="message" placeholder="Tell us what you need"></textarea></div><button class="btn btn-primary" type="button">Submit enquiry</button></form></article></div>
+    </section>
+
+    <section class="page" id="page-login">
+        <div class="auth-wrap"><div class="container" style="display:grid;place-items:center"><article class="auth-card"><span class="eyebrow">Login</span><h2>Welcome back</h2><p class="lead">Your unified platform for education, career growth, exam preparation, and professional opportunities.</p><div class="form-grid" style="margin-top:1rem"><div class="field"><label for="login-email">Email address</label><input id="login-email" type="email" placeholder="student@example.com"></div><div class="field"><label for="login-password">Password</label><input id="login-password" type="password" placeholder="Enter password"></div><button class="btn btn-primary" id="loginBtn" type="button">Login to dashboard</button><button class="btn btn-ghost" type="button">Forgot password?</button></div></article></div></div>
+    </section>
+
+    <section class="page" id="page-signup">
+        <div class="auth-wrap"><div class="container" style="display:grid;place-items:center"><article class="auth-card"><span class="eyebrow">Sign Up</span><h2>Create your account</h2><p class="lead">Create your account and become part of a smarter education and career ecosystem.</p><div class="form-grid" style="margin-top:1rem"><div class="field"><label for="signup-name">Full name</label><input id="signup-name" type="text" placeholder="Enter your full name" required></div><div class="field"><label for="signup-role">Register as</label><select id="signup-role" required><option value="Student">Student</option><option value="Teacher">Teacher</option><option value="Institute">Institute</option></select></div><div class="field"><label for="signup-email">Email address</label><input id="signup-email" type="email" placeholder="Enter your email" required></div><div class="field"><label for="signup-password">Password</label><input id="signup-password" type="password" placeholder="Create a password" required></div><button type="button" class="btn btn-primary" id="signupBtn">Create Account</button></div></article></div></div>
+    </section>
+
+    <section class="page" id="page-student-dashboard">
+      <div class="std-scope">
+        <div class="app">
+          <aside class="sidebar">
+            <div class="brand"><div class="logo">C</div><div><strong>CareerSetu</strong><div style="font-size:12px;color:#bdd0f2">Student Dashboard</div></div></div>
+            <div class="side-group">
+              <button class="side-link active" data-std-target="overview">Overview</button>
+     
+              <button class="side-link" data-std-target="guidance">Career Guidance</button>
+              <button class="side-link" data-std-target="teachers">Find Teachers</button>
+              <button class="side-link" data-std-target="institutes">Find Institutes</button>
+              <button class="side-link" data-std-target="courses">My Courses</button>
+              <button class="side-link" data-std-target="tests">Mock Tests</button>
+            </div>
+        
+             <div></div>
+            <div class="upgrade"><strong>Student Pro</strong><p style="color:#bdd0f2">Unlock counseling slots, advanced reports, and premium exam packs.</p></div>
+          </aside>
+          <main class="main">
+            <div class="topbar">
+              <input class="search" id="globalSearch" placeholder="Search teachers, institutes, JEE, NEET, CUET, BBA courses">
+              <div class="profile">
+                <div class="avatar">U</div>
+                <div><strong id="std-user-name">User</strong><div class="muted">CareerSetu Member</div></div>
+              </div>
+            </div>
+
+            <section class="section active" id="std-overview">
+              <section class="hero">
+        
+                 <article class="card hero-card"><span class="chip" style="background:rgba(255,255,255,.14);color:#fff">Career Journey</span><h1 style="margin:12px 0 8px;font-size:38px;line-height:1.1">Your learning path, mentor search, and course planning in one place.</h1><p>CareerSetu supports students through career recommendations, course discovery, personalized counseling, and competitive exam preparation.</p><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px"><button class="btn" id="bookCounseling">Book Counseling</button><button class="btn secondary" id="openCourses">Explore Courses</button></div><div class="notice" id="studentNotice"></div></article>
+                <article class="card"><div class="muted">Recommendation Match</div><div class="stat" id="matchScore">89%</div><p class="muted">Based on your interest profile, commerce performance, and future goals.</p><div style="margin-top:18px" class="progress"><span id="matchBar" style="width:89%"></span></div><div class="toolbar"><button class="btn secondary rec-btn" data-score="89" data-path="BBA in Business Analytics">Business</button><button class="btn secondary rec-btn" data-score="82" data-path="Digital Marketing">Marketing</button><button class="btn secondary rec-btn" data-score="77" data-path="Data Analytics">Analytics</button></div><div class="list"><div class="row"><div><strong id="bestPath">BBA in Business Analytics</strong><div class="muted">Top fit career path</div></div><span class="chip">Best Match</span></div><div class="row"><div><strong>CUET Smart Prep</strong><div class="muted">Recommended next course</div></div><span class="chip">₹4,999</span></div></div></article>
+              </section>
+              <section class="grid-4">
+                <article class="card"><div class="muted">Saved Teachers</div><div class="stat" id="savedTeachers">12</div><div class="muted">Shortlisted subject experts</div></article>
+                <article class="card"><div class="muted">Institutes Compared</div><div class="stat">7</div><div class="muted">Admissions and fees reviewed</div></article>
+                <article class="card"><div class="muted">Active Courses</div><div class="stat">3</div><div class="muted">Ongoing paid and free modules</div></article>
+                <article class="card"><div class="muted">Mock Test Score</div><div class="stat" id="mockScore">78%</div><div class="muted">Latest practice performance</div></article>
+              </section>
+            </section>
+
+            <section class="section" id="std-guidance"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Career Guidance Panel</h2><p class="muted">Students use CareerSetu for recommendations, counseling, and course discovery.</p><div class="toolbar"><button class="btn" id="runAssessment">Run quick assessment</button><button class="btn secondary" id="bookSession">Schedule session</button></div><div class="notice" id="guidanceNotice"></div></article></section>
+            <section class="section" id="std-teachers"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Find Teachers</h2><input class="search" id="teacherSearch" placeholder="Search by subject or mentor name"><div class="list" id="teacherList"><div class="row" data-name="ritika sen maths"><div><strong>Ritika Sen</strong><div class="muted">Maths mentor · 6 years experience</div></div><span class="chip save-teacher" style="cursor:pointer">Save</span></div><div class="row" data-name="arjun paul english"><div><strong>Arjun Paul</strong><div class="muted">English communication trainer</div></div><span class="chip save-teacher" style="cursor:pointer">Save</span></div><div class="row" data-name="neha sharma cuet reasoning"><div><strong>Neha Sharma</strong><div class="muted">CUET reasoning faculty</div></div><span class="chip save-teacher" style="cursor:pointer">Save</span></div></div></article></section>
+            <section class="section" id="std-institutes"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Find Institutes</h2><div class="list"><div class="row"><div><strong>Bright Future Institute</strong><div class="muted">Commerce and BBA pathways</div></div><button class="btn secondary compare-btn">Compare</button></div><div class="row"><div><strong>NextGen Academy</strong><div class="muted">Entrance prep and counseling</div></div><button class="btn secondary compare-btn">Compare</button></div></div><div class="notice" id="instituteNotice"></div></article></section>
+            <section class="section" id="std-courses"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">My Courses</h2><div class="list"><div class="row"><div><strong>CUET Smart Prep</strong><div class="muted">32% completed</div></div><button class="btn secondary continue-course" data-progress="58">Continue</button></div><div class="row"><div><strong>General Aptitude Pack</strong><div class="muted">12 mock tests included</div></div><button class="btn secondary continue-course" data-progress="71">Continue</button></div></div><div class="notice" id="courseNotice"></div></article></section>
+            <section class="section" id="std-tests"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Mock Tests</h2><p class="muted">Competitive exam preparation includes mock tests and analytics.</p><div class="toolbar"><button class="btn" id="takeMock">Take mock test</button><button class="btn secondary" id="improveScore">Analyze weak areas</button></div><div class="notice" id="testNotice"></div></article></section>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-teacher-dashboard">
+      <div class="tch-scope">
+        <div class="layout">
+          <aside class="rail">
+            <div class="dot">C</div>
+            <button class="nav-btn active" data-tch-target="home">Home</button>
+      
+             <button class="nav-btn" data-tch-target="jobs">Jobs</button>
+            <button class="nav-btn" data-tch-target="courses">Courses</button>
+            <button class="nav-btn" data-tch-target="students">Students</button>
+            <button class="nav-btn" data-tch-target="earnings">₹</button>
+            <button class="nav-btn" data-tch-target="profile">Me</button>
+          </aside>
+          <main class="main">
+            <div class="top">
+  
+               <div class="title"><h1 style="margin:0;font-size:34px">Teacher Command Center</h1><p>Designed for job discovery, course publishing, tuition matching, and revenue tracking.</p></div>
+              <div class="actions">
+                <input class="search" id="teacherGlobalSearch" placeholder="Search institute jobs, student leads, subject demand">
+                <button class="btn primary" id="quickUpload">Upload Course</button>
+              
+                 <div style="display:flex;align-items:center;gap:12px;">
+                  <strong id="tch-user-name">User</strong>
+                </div>
+              </div>
+            </div>
+
+            <section class="panel active" id="tch-home">
+              <section class="hero">
+      
+                 <article class="card accent"><span class="tag" style="background:rgba(255,255,255,.15);color:#fff">Educator Growth</span><h2 style="font-size:36px;line-height:1.1;margin:14px 0 10px">Turn expertise into jobs, tuition demand, and course income.</h2><p>CareerSetu gives teachers a dedicated job marketplace, content monetization tools, and tuition matching with students.</p><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px"><button class="btn primary" style="background:#fff;color:#9c520c" id="viewJobsBtn">View Job Matches</button><button class="btn soft" style="background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.2)" id="openAnalyticsBtn">Open Analytics</button></div><div class="notice" id="teacherNotice"></div></article>
+                <article class="card"><div class="muted">Monthly earnings snapshot</div><div class="metric" id="earningsTotal">₹38,450</div><p class="muted">Course sales, tuition sessions, and premium mentoring combined.</p><div style="margin-top:18px" class="progress"><span id="earningsBar" style="width:76%"></span></div><div class="table"><div class="row"><div><strong>Course sales</strong><div class="muted">4 active products</div></div><span class="tag">₹21,900</span></div><div class="row"><div><strong>Live tuition</strong><div class="muted">18 students this month</div></div><span class="tag">₹12,300</span></div><div class="row"><div><strong>Doubt sessions</strong><div class="muted">On-demand support</div></div><span class="tag">₹4,250</span></div></div></article>
+              </section>
+            </section>
+            <section class="panel" id="tch-jobs"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Recommended institute jobs</h2><div class="table" id="jobTable"><div class="row"><div><strong>Senior Commerce Faculty</strong><div class="muted">Bright Future Institute · Kolkata</div></div><button class="btn soft apply-btn">Apply</button></div><div class="row"><div><strong>Verbal Ability Trainer</strong><div class="muted">NorthStar Academy · Hybrid</div></div><button class="btn soft apply-btn">Apply</button></div><div class="row"><div><strong>CUET Mentor</strong><div class="muted">CareerLaunch Center</div></div><button class="btn soft apply-btn">Apply</button></div></div><div class="notice" id="jobNotice"></div></article></section>
+            <section class="panel" id="tch-courses"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Course publishing panel</h2><div class="table"><div class="row"><div><strong>Accounts for BBA Students</strong><div class="muted">Enrollment 184 · Rating 4.8</div></div><button class="btn soft promo-btn" data-boost="₹24,200">Boost Sales</button></div><div class="row"><div><strong>Spoken English Accelerator</strong><div class="muted">Enrollment 96 · Rating 4.7</div></div><button class="btn soft promo-btn" data-boost="₹19,300">Boost Sales</button></div><div class="row"><div><strong>Business Maths Fast Track</strong><div class="muted">Draft course awaiting upload</div></div><button class="btn primary" id="publishDraft">Publish</button></div></div><div class="notice" id="courseNotice"></div></article></section>
+            <section class="panel" id="tch-students"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Tuition matching requests</h2><div class="table"><div class="row"><div><strong>Class 12 Commerce</strong><div class="muted">Weekly 3 sessions · Evening slot</div></div><button class="btn soft accept-student">Accept</button></div><div class="row"><div><strong>BBA Statistics Support</strong><div class="muted">Weekend doubt sessions</div></div><button class="btn soft accept-student">Accept</button></div><div class="row"><div><strong>Interview Skills Mentorship</strong><div class="muted">Graduate learner</div></div><button class="btn soft accept-student">Accept</button></div></div><div class="notice" id="studentNotice"></div></article></section>
+  
+             <section class="panel" id="tch-earnings"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Performance analytics</h2><div class="table"><div class="row"><div><strong>Student completion rate</strong><div class="muted">Across paid courses</div></div><span class="tag">82%</span></div><div class="row"><div><strong>Average rating</strong><div class="muted">Based on 224 reviews</div></div><span class="tag">4.8/5</span></div><div class="row"><div><strong>Content conversion</strong><div class="muted">Preview to purchase ratio</div></div><span class="tag">31%</span></div></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn primary" id="refreshAnalytics">Refresh Analytics</button></div><div class="notice" id="analyticsNotice"></div></article></section>
+            <section class="panel" id="tch-profile"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Profile strength</h2><p class="muted">Improve visibility by completing achievements, experience, and demo lessons.</p><div class="progress" style="margin:14px 0 8px"><span id="profileBar" style="width:72%"></span></div><strong id="profileValue">72% complete</strong><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn primary" id="completeProfile">Complete Profile</button></div><div class="notice" id="profileNotice"></div></article></section>
+          </main>
+ 
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-institute-dashboard">
+      <div class="inst-scope">
+        <div class="shell">
+          <aside class="sidebar">
+            <div class="brand"><div class="badge">C</div><div><strong>CareerSetu</strong><div style="font-size:12px;color:#b9dcc4">Institute Dashboard</div></div></div>
+            <nav class="nav">
+              <button class="nav-btn active" data-inst-target="overview">Overview</button>
+    
+               <button class="nav-btn" data-inst-target="campaigns">Ad Campaigns</button>
+              <button class="nav-btn" data-inst-target="leads">Student Leads</button>
+              <button class="nav-btn" data-inst-target="hiring">Teacher Hiring</button>
+              <button class="nav-btn" data-inst-target="courses">Course Listings</button>
+              <button class="nav-btn" data-inst-target="reports">Reports</button>
+            </nav>
+        
+             <div></div>
+            <div class="note"><strong>Institute Growth</strong><p style="color:#b9dcc4">Manage visibility, admissions leads, and faculty recruitment from one workspace.</p></div>
+          </aside>
+          <main class="main">
+            <div class="top">
+              <div><h1 style="margin:0;font-size:34px">Institute Growth Dashboard</h1><p class="muted" style="margin:6px 0 0">Built for advertising, lead generation, and teacher recruitment.</p></div>
+          
+               <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+                <input class="search" id="instituteSearch" placeholder="Search campaigns, student leads, teacher candidates">
+                <button class="btn primary" id="createCampaignTop">Create Ad Campaign</button>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <strong id="inst-user-name">User</strong>
+              
+                 </div>
+              </div>
+            </div>
+
+            <section class="panel active" id="inst-overview">
+              <section class="hero">
+                <article class="card dark-card"><span class="tag" style="background:rgba(255,255,255,.14);color:#fff">Admissions Engine</span><h2 style="font-size:36px;line-height:1.1;margin:14px 0 10px">Promote courses, attract leads, and hire qualified educators faster.</h2><p>CareerSetu gives institutes advertisement listings, student lead generation, and recruitment tools for teachers.</p><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px"><button class="btn primary" style="background:#fff;color:#17693c" id="viewLeadsBtn">View Leads</button><button class="btn soft" style="background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.18)" id="postHiringBtn">Post Hiring Ad</button></div><div class="notice" id="overviewNotice"></div></article>
+                <article class="card"><div class="muted">Campaign performance</div><div class="metric" id="leadMetric">1,248</div><p class="muted">Student inquiries generated this month through featured listings and targeted campaigns.</p><div style="margin-top:18px" class="progress"><span id="leadBar" style="width:83%"></span></div><div class="table"><div class="row"><div><strong>Featured BBA Campaign</strong><div class="muted">CTR and enquiries improving</div></div><span class="tag">High</span></div><div class="row"><div><strong>CA Foundation Ad</strong><div class="muted">Top-performing course listing</div></div><span class="tag">Best ROI</span></div></div></article>
+              </section>
+            </section>
+     
+            <section class="panel" id="inst-campaigns"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Ad campaign controls</h2><div class="table"><div class="row"><div><strong>Homepage Banner Slot</strong><div class="muted">Premium visibility for flagship program</div></div><button class="btn soft campaign-toggle">Pause</button></div><div class="row"><div><strong>Featured Institute Card</strong><div class="muted">Shown in student search results</div></div><button class="btn soft campaign-toggle">Pause</button></div></div><div class="notice" id="campaignNotice"></div></article></section>
+            <section class="panel" id="inst-leads"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Lead generation overview</h2><div class="table"><div class="row"><div><strong>BBA Program Leads</strong><div class="muted">114 interested students</div></div><button class="btn soft convert-btn">Mark Follow-up</button></div><div class="row"><div><strong>CUET Foundation Leads</strong><div class="muted">87 enquiries in 7 days</div></div><button class="btn soft convert-btn">Mark Follow-up</button></div><div class="row"><div><strong>Skill Certification Leads</strong><div class="muted">62 prospect learners</div></div><button class="btn soft convert-btn">Mark Follow-up</button></div></div><div class="notice" id="leadNotice"></div></article></section>
+     
+            <section class="panel" id="inst-hiring"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Teacher recruitment board</h2><div class="table"><div class="row"><div><strong>Accounts Faculty</strong><div class="muted">12 applicants shortlisted</div></div><button class="btn soft shortlist-btn">Shortlist</button></div><div class="row"><div><strong>English Trainer</strong><div class="muted">8 verified applicants</div></div><button class="btn soft shortlist-btn">Shortlist</button></div><div class="row"><div><strong>Data Analytics Mentor</strong><div class="muted">5 high-fit profiles</div></div><button class="btn soft shortlist-btn">Shortlist</button></div></div><div class="notice" id="hiringNotice"></div></article></section>
+            <section class="panel" id="inst-courses"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Course promotions</h2><div class="table"><div class="row"><div><strong>BBA Entrance Batch</strong><div class="muted">Ad budget ₹12,000</div></div><button class="btn primary budget-btn" data-budget="₹15,000">Increase Budget</button></div><div class="row"><div><strong>CA Foundation Elite</strong><div class="muted">Ad budget ₹18,000</div></div><button class="btn primary budget-btn" data-budget="₹22,000">Increase Budget</button></div></div><div class="notice" id="courseNotice"></div></article></section>
+            <section class="panel" id="inst-reports"><article class="card"><h2 style="font-size:28px;margin:0 0 10px">Reports and insights</h2><p class="muted">Institute tools are designed to improve campaign efficiency, student acquisition, and staffing decisions.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary" id="refreshReports">Refresh Reports</button></div><div class="notice" id="reportNotice"></div></article></section>
+          </main>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer-modern">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <strong>CareerSetu</strong>
+          <p>We seamlessly connect students, teachers, and institutions—empowering every learner's journey with discovery, mentorship, and growth.</p>
+          <p style="color: rgba(255,255,255,0.75); font-size: 0.95rem; font-weight: 600;">
+            <i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> contact@careersetu.in
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-heading">For Students</div>
+          <ul class="footer-links">
+            <li><a href="#students" data-route="students">Student Services</a></li>
+            <li><a href="#students" data-route="students">Career Recommendations</a></li>
+            <li><a href="#courses" data-route="courses">Browse Courses</a></li>
+            <li><a href="#students" data-route="students">Mock Tests & Prep</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-heading">For Teachers</div>
+          <ul class="footer-links">
+            <li><a href="#teachers" data-route="teachers">Teacher Opportunities</a></li>
+            <li><a href="#teachers" data-route="teachers">Job Marketplace</a></li>
+            <li><a href="#teachers" data-route="teachers">Upload & Sell Courses</a></li>
+            <li><a href="#teachers" data-route="teachers">Tuition Matching</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-heading">For Institutes</div>
+          <ul class="footer-links">
+            <li><a href="#institutes" data-route="institutes">Institute Solutions</a></li>
+            <li><a href="#institutes" data-route="institutes">Generate Leads</a></li>
+            <li><a href="#institutes" data-route="institutes">Hire Educators</a></li>
+            <li><a href="#institutes" data-route="institutes">Ad Campaigns</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-left">© 2026 CareerSetu. All rights reserved.</div>
+        <div class="footer-right">
+          <div class="social-icons">
+            <a href="https://facebook.com" aria-label="Facebook" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://twitter.com" aria-label="Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" aria-label="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://youtube.com" aria-label="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // --- App Routing ---
+    const pages = document.querySelectorAll('.page');
+    const routeLinks = document.querySelectorAll('[data-route]');
+    const navMenu = document.getElementById('navMenu');
+    const menuToggle = document.getElementById('menuToggle');
+    const themeToggle = document.getElementById('themeToggle');
+    let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', theme);
+    themeToggle.textContent = theme === 'dark' ? '☀' : '☾';
+    window.setRoute = function(route){
+      const allowed = ['home', 'students', 'teachers', 'institutes', 'courses', 'contact', 'login', 'signup', 'student-dashboard', 'teacher-dashboard', 'institute-dashboard'];
+      const current = allowed.includes(route) ? route : 'home';
+      pages.forEach(page => page.classList.remove('active'));
+      const targetPage = document.getElementById('page-' + current);
+      if(targetPage) targetPage.classList.add('active');
+      routeLinks.forEach(link => link.classList.toggle('active', link.dataset.route === current));
+      if(navMenu) navMenu.classList.remove('open');
+      window.scrollTo({top:0, behavior:'smooth'});
+    };
+    function handleRoute(){
+      const route = (window.location.hash || '#home').replace('#','');
+      if(route) window.setRoute(route); else window.setRoute('home');
+    }
+
+    window.addEventListener('hashchange', handleRoute);
+    handleRoute();
+
+    if(menuToggle) menuToggle.addEventListener('click',()=>navMenu.classList.toggle('open'));
+    if(themeToggle) themeToggle.addEventListener('click',()=>{
+      theme = theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+      themeToggle.textContent = theme === 'dark' ? '☀' : '☾';
+    });
+    // --- STUDENT DASHBOARD JS ---
+    const stdSections = document.querySelectorAll('.std-scope .section');
+    const stdLinks = document.querySelectorAll('.std-scope .side-link');
+    stdLinks.forEach(btn => btn.addEventListener('click', () => {
+      stdLinks.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      stdSections.forEach(s => s.classList.remove('active'));
+      document.getElementById('std-' + btn.dataset.stdTarget).classList.add('active');
+    }));
+    const stdNotice = document.getElementById('studentNotice');
+    document.getElementById('bookCounseling').onclick=()=>{stdNotice.textContent='Counseling session booked for Tuesday at 5:00 PM.';stdNotice.classList.add('show')};
+    document.getElementById('openCourses').onclick=()=>{
+      stdLinks.forEach(b=>b.classList.remove('active'));
+      document.querySelector('[data-std-target="courses"]').classList.add('active');
+      stdSections.forEach(s=>s.classList.remove('active'));
+      document.getElementById('std-courses').classList.add('active');
+    };
+    document.querySelectorAll('.rec-btn').forEach(btn=>btn.onclick=()=>{document.getElementById('matchScore').textContent=btn.dataset.score+'%';document.getElementById('matchBar').style.width=btn.dataset.score+'%';document.getElementById('bestPath').textContent=btn.dataset.path});
+    document.getElementById('runAssessment').onclick=()=>{const score=Math.floor(75+Math.random()*20);document.getElementById('guidanceNotice').textContent='Assessment complete. Your updated recommendation score is '+score+'%.';document.getElementById('guidanceNotice').classList.add('show');document.getElementById('matchScore').textContent=score+'%';document.getElementById('matchBar').style.width=score+'%';};
+    document.getElementById('bookSession').onclick=()=>{const n=document.getElementById('guidanceNotice');n.textContent='Personalized guidance session confirmed.';n.classList.add('show')};
+    document.getElementById('teacherSearch').addEventListener('input',e=>{const q=e.target.value.toLowerCase();document.querySelectorAll('#teacherList .row').forEach(row=>row.style.display=row.dataset.name.includes(q)?'flex':'none')});
+    let saved=12;document.querySelectorAll('.save-teacher').forEach(btn=>btn.onclick=()=>{if(btn.textContent==='Saved')return;btn.textContent='Saved';saved++;document.getElementById('savedTeachers').textContent=saved});
+    document.querySelectorAll('.compare-btn').forEach(btn=>btn.onclick=()=>{const n=document.getElementById('instituteNotice');n.textContent='Institute added to comparison shortlist.';n.classList.add('show')});
+    document.querySelectorAll('.continue-course').forEach(btn=>btn.onclick=()=>{const p=btn.dataset.progress;const n=document.getElementById('courseNotice');n.textContent='Course progress updated to '+p+'% completion.';n.classList.add('show')});
+    document.getElementById('takeMock').onclick=()=>{const score=Math.floor(70+Math.random()*25);document.getElementById('mockScore').textContent=score+'%';const n=document.getElementById('testNotice');n.textContent='Mock test submitted. New score: '+score+'%.';n.classList.add('show')};
+    document.getElementById('improveScore').onclick=()=>{const n=document.getElementById('testNotice');n.textContent='Weak areas identified: reasoning speed, quantitative accuracy, and time management.';n.classList.add('show')};
+    
+    // --- TEACHER DASHBOARD JS ---
+    const tchPanels = document.querySelectorAll('.tch-scope .panel');
+    const tchNavBtns = document.querySelectorAll('.tch-scope .nav-btn');
+    tchNavBtns.forEach(btn => btn.addEventListener('click', () => {
+      tchNavBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      tchPanels.forEach(p => p.classList.remove('active'));
+      document.getElementById('tch-' + btn.dataset.tchTarget).classList.add('active');
+    }));
+    const teacherNotice = document.getElementById('teacherNotice');
+    document.getElementById('quickUpload').onclick=()=>{tchNavBtns.forEach(b=>b.classList.remove('active'));document.querySelector('[data-tch-target="courses"]').classList.add('active');tchPanels.forEach(p=>p.classList.remove('active'));document.getElementById('tch-courses').classList.add('active')};
+    document.getElementById('viewJobsBtn').onclick=()=>{tchNavBtns.forEach(b=>b.classList.remove('active'));document.querySelector('[data-tch-target="jobs"]').classList.add('active');tchPanels.forEach(p=>p.classList.remove('active'));document.getElementById('tch-jobs').classList.add('active')};
+    document.getElementById('openAnalyticsBtn').onclick=()=>{teacherNotice.textContent='Analytics synced with your latest course and tuition performance.';teacherNotice.classList.add('show')};
+    document.querySelectorAll('.tch-scope .apply-btn').forEach(btn=>btn.onclick=()=>{const n=document.getElementById('jobNotice');n.textContent='Application submitted successfully.';n.classList.add('show');btn.textContent='Applied';btn.disabled=true});
+    document.querySelectorAll('.promo-btn').forEach(btn=>btn.onclick=()=>{const n=document.getElementById('courseNotice');n.textContent='Promotion campaign started. Expected revenue projection: '+btn.dataset.boost+'.';n.classList.add('show')});
+    document.getElementById('publishDraft').onclick=()=>{const n=document.getElementById('courseNotice');n.textContent='Draft course published and now visible to students.';n.classList.add('show')};
+    document.querySelectorAll('.accept-student').forEach(btn=>btn.onclick=()=>{const n=document.getElementById('studentNotice');n.textContent='Tuition request accepted. Demo session scheduled.';n.classList.add('show');btn.textContent='Accepted';btn.disabled=true});
+    document.getElementById('refreshAnalytics').onclick=()=>{const total='₹'+(36000+Math.floor(Math.random()*8000)).toLocaleString('en-IN');document.getElementById('earningsTotal').textContent=total;document.getElementById('earningsBar').style.width=(70+Math.floor(Math.random()*20))+'%';const n=document.getElementById('analyticsNotice');n.textContent='Analytics refreshed with updated revenue snapshot: '+total+'.';n.classList.add('show')};
+    document.getElementById('completeProfile').onclick=()=>{document.getElementById('profileBar').style.width='94%';document.getElementById('profileValue').textContent='94% complete';const n=document.getElementById('profileNotice');n.textContent='Profile updated. Your discoverability score has improved.';n.classList.add('show')};
+
+    // --- INSTITUTE DASHBOARD JS ---
+    const instPanels = document.querySelectorAll('.inst-scope .panel');
+    const instNavBtns = document.querySelectorAll('.inst-scope .nav-btn');
+    const gotoInstPanel = (name) => {
+      instNavBtns.forEach(b => b.classList.remove('active'));
+      document.querySelector('[data-inst-target="'+name+'"]').classList.add('active');
+      instPanels.forEach(p => p.classList.remove('active'));
+      document.getElementById('inst-' + name).classList.add('active');
+    };
+    instNavBtns.forEach(btn => btn.addEventListener('click', () => gotoInstPanel(btn.dataset.instTarget)));
+    document.getElementById('createCampaignTop').onclick=()=>gotoInstPanel('campaigns');
+    document.getElementById('viewLeadsBtn').onclick=()=>gotoInstPanel('leads');
+    document.getElementById('postHiringBtn').onclick=()=>gotoInstPanel('hiring');
+    document.querySelectorAll('.campaign-toggle').forEach(btn=>btn.onclick=()=>{btn.textContent=btn.textContent==='Pause'?'Resume':'Pause';const n=document.getElementById('campaignNotice');n.textContent='Campaign status updated successfully.';n.classList.add('show')});
+    document.querySelectorAll('.convert-btn').forEach(btn=>btn.onclick=()=>{btn.textContent='Follow-up Set';btn.disabled=true;const n=document.getElementById('leadNotice');n.textContent='Lead moved into follow-up pipeline.';n.classList.add('show')});
+    document.querySelectorAll('.shortlist-btn').forEach(btn=>btn.onclick=()=>{btn.textContent='Shortlisted';btn.disabled=true;const n=document.getElementById('hiringNotice');n.textContent='Candidate shortlisted for next review round.';n.classList.add('show')});
+    document.querySelectorAll('.budget-btn').forEach(btn=>btn.onclick=()=>{const n=document.getElementById('courseNotice');n.textContent='Campaign budget increased. New recommendation budget: '+btn.dataset.budget+'.';n.classList.add('show')});
+    document.getElementById('refreshReports').onclick=()=>{const leads=1100+Math.floor(Math.random()*300);document.getElementById('leadMetric').textContent=leads.toLocaleString('en-IN');document.getElementById('leadBar').style.width=(76+Math.floor(Math.random()*15))+'%';const n=document.getElementById('reportNotice');n.textContent='Reports refreshed. Updated monthly lead count: '+leads.toLocaleString('en-IN')+'.';n.classList.add('show')};
+
+    // --- NEW COURSES JS (Integrated) ---
+    const courseCatalog = [
+      {
+        id:'bba-analytics', title:'BBA in Business Analytics Launchpad', instructor:'Dr. Aritra Sen',
+        short:'A future-ready foundation program for commerce and management students who want to build analytical thinking, Excel fluency, and decision-making confidence.',
+        description:'This flagship course is designed for students exploring business, management, analytics, and entrepreneurial roles. It blends core business concepts with practical Excel, dashboards, market analysis, and interview preparation so learners can move from academic theory to career application with confidence.',
+        duration:'16 weeks · 5 hours/week', price:'₹6,499', original:'₹8,999', rating:'4.9', reviewsCount:'1,284',
+        level:'Beginner to Intermediate', learners:'5,200+ learners', category:'Business & Analytics', bannerClass:'grad-1', heroTag:'Most popular',
+        benefits:['Industry-oriented business analytics foundation','Excel, dashboards, and reporting practice','Career counseling plus mentor office hours','Capstone business case and portfolio-ready output'],
+        highlights:['Live doubt clearing every weekend','Placement-readiness checklists','Business case simulations','Interview and SOP preparation'],
+        syllabus:[
+          'Module 1 · Business fundamentals, management thinking, and modern career paths',
+          'Module 2 · Excel essentials, formulas, lookup tools, and data cleaning',
+          'Module 3 · Dashboard design, KPI thinking, and reporting structure',
+          'Module 4 · Consumer research, survey basics, and insight generation',
+          'Module 5 · Business storytelling, presentation flow, and career project work',
+          'Module 6 · Capstone analytics case, mentor review, and portfolio preparation'
+        ],
+        tests:'12 mock tests, 8 graded assignments, 2 live case evaluations, and one capstone presentation review.',
+        mentor:'Dedicated course mentor, weekly office hours, WhatsApp support window, and escalation support for career planning questions.',
+        certificate:'Yes. Learners receive a verified CareerSetu completion certificate with project evaluation remarks and skill tags.',
+        faq:[
+          ['Is this suitable for BBA aspirants?','Yes. The course is built for students exploring BBA, business analytics, management, and early-stage corporate skill development.'],
+          ['Do I need prior Excel knowledge?','No. The program starts from fundamentals and progressively moves to business-focused analysis and dashboards.'],
+          ['Will I get project support?','Yes. The capstone includes structured mentorship, review comments, and improvement guidance.']
+        ],
+        reviews:[
+          ['Riya Ghosh','The course felt practical from week one. The Excel modules and market research activities were especially useful for my BBA applications.','5.0'],
+          ['Arpan Dutta','I liked the dashboard and business case sections because they connected theory to actual business decision-making.','4.8']
+        ],
+        related:['Digital Marketing Career Starter','Data Analytics with Excel Essentials']
+      },
+      {
+        id:'digital-marketing', title:'Digital Marketing Career Starter', instructor:'Priyanka Mehta',
+        short:'A practical digital marketing course covering branding, SEO, content strategy, social media campaigns, and performance tracking for students and freshers.',
+        description:'This course helps learners understand how digital brands grow online and how campaigns are planned, measured, and improved. It is ideal for students who want to build marketing skills, freelance confidently, or create stronger startup and personal brand strategies.',
+        duration:'12 weeks · 4 hours/week', price:'₹5,499', original:'₹7,299', rating:'4.8', reviewsCount:'962',
+        level:'Beginner', learners:'3,900+ learners', category:'Marketing', bannerClass:'grad-5', heroTag:'Trending',
+        benefits:['SEO, content, and social media foundations','Ad campaign planning with performance metrics','Portfolio tasks and brand simulations','Freelancing and client communication guidance'],
+        highlights:['Campaign calendar templates','Instagram and LinkedIn growth workflows','Copywriting frameworks','Beginner-friendly performance analytics'],
+        syllabus:[
+          'Module 1 · Marketing fundamentals and digital consumer behavior',
+          'Module 2 · SEO basics, keyword thinking, and search visibility',
+          'Module 3 · Content strategy, storytelling, and social media calendars',
+          'Module 4 · Paid ads introduction, creatives, and campaign structure',
+          'Module 5 · Analytics, metrics, and reporting for growth decisions',
+          'Module 6 · Portfolio project, mock brand brief, and final review'
+        ],
+        tests:'10 mock quizzes, 6 campaign assignments, one brand audit submission, and a final portfolio presentation.',
+        mentor:'Weekly marketing mentor clinic, resume support for internship applications, and peer review discussion room.',
+        certificate:'Yes. Includes a shareable certificate and campaign project badge for LinkedIn or portfolio use.',
+        faq:[
+          ['Can beginners join this course?','Yes. It is structured for learners with no prior marketing experience.'],
+          ['Will it help with freelancing?','Yes. There is a dedicated section on client discovery, proposals, and communication basics.'],
+          ['Are live sessions included?','Yes. Learners receive scheduled live sessions for campaign review and Q&A.']
+        ],
+        reviews:[
+          ['Soham Roy','The content calendar and ad basics made digital marketing much easier to understand.','4.9'],
+          ['Nandini Pal','Loved the real examples and the feedback on my brand audit assignment.','4.7']
+        ],
+        related:['BBA in Business Analytics Launchpad','Interview Skills & Career Confidence Bootcamp']
+      },
+      {
+        id:'data-analytics-excel', title:'Data Analytics with Excel Essentials', instructor:'Rahul Khanna',
+        short:'Learn the business side of analytics with Excel, visual reporting, interpretation skills, and beginner-friendly decision dashboards.',
+        description:'A hands-on analytics course for students and professionals who want to become more confident with structured data work. The program combines spreadsheet skills, analysis logic, presentation-ready dashboards, and scenario interpretation for academic and business use.',
+        duration:'14 weeks · 5 hours/week', price:'₹6,999', original:'₹9,499', rating:'4.9', reviewsCount:'1,106',
+        level:'Beginner to Intermediate', learners:'4,600+ learners', category:'Analytics', bannerClass:'grad-6', heroTag:'Skill accelerator',
+        benefits:['Excel-based analysis from scratch','Dashboard design and insight extraction','Business datasets and case practice','Assignment feedback with result interpretation'],
+        highlights:['Hands-on spreadsheet work','KPI-driven dashboards','Realistic case datasets','Career project output'],
+        syllabus:[
+          'Module 1 · Spreadsheet navigation and data structuring principles',
+          'Module 2 · Core formulas, filters, sorting, and validation workflows',
+          'Module 3 · Lookup, logical functions, and analysis setup',
+          'Module 4 · Pivot tables, charts, and reporting design',
+          'Module 5 · Business KPI dashboards and storytelling',
+          'Module 6 · Mini analytics project and presentation review'
+        ],
+        tests:'14 quizzes, 9 graded spreadsheets, 3 dashboard reviews, and one final business interpretation assignment.',
+        mentor:'Mentor feedback on assignment errors, formula debugging support, and revision worksheets after each module.',
+        certificate:'Yes. The certificate mentions spreadsheet analytics, dashboard basics, and business reporting skills.',
+        faq:[
+          ['Is Excel enough to start analytics?','Yes. Excel remains one of the best starting tools for business analytics and reporting foundations.'],
+          ['Will I build dashboards?','Yes. Dashboard design is a major part of the course workflow.'],
+          ['Do assignments get checked?','Yes. Selected assignments are evaluated with structured remarks and improvement notes.']
+        ],
+        reviews:[
+          ['Titas Banerjee','This course improved both my Excel speed and my ability to explain data clearly.','5.0'],
+          ['Rohan Sharma','The dashboards felt realistic and useful for college projects and internships.','4.8']
+        ],
+        related:['BBA in Business Analytics Launchpad','CUET Smart Prep Master Track']
+      },
+      {
+        id:'cuet-smart-prep', title:'CUET Smart Prep Master Track', instructor:'Ananya Bhardwaj',
+        short:'Structured entrance preparation with subject strategy, mock test analytics, study planning, and mentor-led improvement reviews.',
+        description:'This course is built for students preparing for CUET and similar aptitude-based entrance pathways. It helps learners organize preparation, improve accuracy, and build confidence with timed practice, subject diagnostics, and mentor intervention where needed.',
+        duration:'18 weeks · 6 hours/week', price:'₹7,499', original:'₹10,299', rating:'4.7', reviewsCount:'1,440',
+        level:'Exam prep', learners:'6,800+ learners', category:'Entrance Preparation', bannerClass:'grad-2', heroTag:'Exam focused',
+        benefits:['Structured weekly prep plan','Mock-test analytics and weak-area reports','Live doubt sessions and timed drills','Mentor intervention for score improvement'],
+        highlights:['Adaptive revision plans','Performance trend mapping','Exam temperament guidance','Subject-specific strategy sheets'],
+        syllabus:[
+          'Module 1 · Exam structure, scoring logic, and planning roadmap',
+          'Module 2 · Quantitative aptitude and speed-improvement drills',
+          'Module 3 · Reasoning techniques and elimination strategy',
+          'Module 4 · Language and comprehension accuracy building',
+          'Module 5 · Full-length mocks and performance diagnostics',
+          'Module 6 · Final revision calendar and exam readiness review'
+        ],
+        tests:'20 full-length mocks, 30 sectional tests, rank-based analysis dashboards, and mentor-reviewed revision plans.',
+        mentor:'Personal preparation mentor, score-tracking support, and weekly doubt support for high-priority topics.',
+        certificate:'This is an exam-prep track, so learners receive a completion record and performance summary instead of a career certificate.',
+        faq:[
+          ['Does this include full mock tests?','Yes. Full-length tests and sectional practice are central to the program.'],
+          ['Is it useful for self-paced learners?','Yes. The study calendar and diagnostic reports help learners stay disciplined even in self-paced mode.'],
+          ['Do I get rank analysis?','Yes. Test summaries include percentile-oriented performance interpretation.']
+        ],
+        reviews:[
+          ['Moumita Das','The weak-area report after each mock helped me use my time much better.','4.8'],
+          ['Yash Agarwal','Very strong structure for entrance prep. The mentor sessions kept me on track.','4.7']
+        ],
+        related:['Interview Skills & Career Confidence Bootcamp','Data Analytics with Excel Essentials']
+      },
+      {
+        id:'interview-confidence', title:'Interview Skills & Career Confidence Bootcamp', instructor:'Sonal Arora',
+        short:'Build communication clarity, personal branding, interview structure, and professional confidence for academic and early-career opportunities.',
+        description:'A high-impact bootcamp for students and fresh graduates who want to improve how they introduce themselves, answer confidently, and present their strengths in interviews, group discussions, and professional interactions. The course combines communication practice with structured feedback and confidence-building frameworks.',
+        duration:'8 weeks · 3 hours/week', price:'₹3,999', original:'₹5,499', rating:'4.8', reviewsCount:'734',
+        level:'All levels', learners:'2,700+ learners', category:'Career Preparation', bannerClass:'grad-4', heroTag:'Placement essential',
+        benefits:['Mock interviews and personalized feedback','Better speaking structure and body language awareness','Resume, SOP, and self-introduction support','Confidence drills for placements and admissions'],
+        highlights:['HR and academic interview practice','Confidence-building frameworks','Speaking and storytelling drills','Structured personal branding guidance'],
+        syllabus:[
+          'Module 1 · Self-introduction, narrative clarity, and confidence setup',
+          'Module 2 · Resume communication and academic story building',
+          'Module 3 · Common interview questions and answer frameworks',
+          'Module 4 · Body language, voice control, and confidence drills',
+          'Module 5 · Group discussion and professional etiquette',
+          'Module 6 · Final mock interview and personalized action plan'
+        ],
+        tests:'5 mock interviews, 6 reflective assignments, communication rubrics, and final growth review with mentor feedback.',
+        mentor:'Career coach support, verbal feedback sessions, and practice checklist monitoring throughout the bootcamp.',
+        certificate:'Yes. Learners receive a communication and interview preparedness certificate with mentor remarks.',
+        faq:[
+          ['Will this help with college interviews?','Yes. The frameworks are useful for admissions, internships, and placement conversations.'],
+          ['Do I need fluent English already?','No. The bootcamp is designed to improve communication confidence progressively.'],
+          ['Is there personal feedback?','Yes. Core exercises include direct review and improvement notes.']
+        ],
+        reviews:[
+          ['Sneha Kar','My confidence improved a lot after the mock interview rounds and personal feedback.','4.9'],
+          ['Debojit Saha','It helped me answer in a more structured and calm way during interviews.','4.7']
+        ],
+        related:['Digital Marketing Career Starter','CUET Smart Prep Master Track']
+      },
+      {
+        id:'startup-foundation', title:'Startup Foundation for Student Entrepreneurs', instructor:'Karan Bedi',
+        short:'Learn idea validation, customer discovery, business model thinking, and pitch preparation with a student-startup mindset.',
+        description:'A practical foundation course for learners who want to think like entrepreneurs, validate ideas, and build sharper business plans. It is especially useful for students exploring startup projects, business competitions, and market-driven ventures in the early stage.',
+        duration:'10 weeks · 4 hours/week', price:'₹5,999', original:'₹7,999', rating:'4.8', reviewsCount:'688',
+        level:'Beginner to Intermediate', learners:'2,100+ learners', category:'Entrepreneurship', bannerClass:'grad-3', heroTag:'Founder track',
+        benefits:['Idea validation and customer discovery tools','Business model and market positioning practice','Pitch deck and storytelling guidance','Mentor-led startup critique sessions'],
+        highlights:['Lean startup frameworks','Student founder case studies','Business model canvas practice','Pitching and validation tasks'],
+        syllabus:[
+          'Module 1 · Entrepreneurial thinking and opportunity spotting',
+          'Module 2 · Problem validation and customer discovery methods',
+          'Module 3 · Competitor analysis and market positioning',
+          'Module 4 · Business model design and unit economics basics',
+          'Module 5 · Pitch decks, storytelling, and investor perspective',
+          'Module 6 · Startup presentation, mentor critique, and roadmap planning'
+        ],
+        tests:'8 assignments, 3 live pitch reviews, one founder reflection journal, and a final startup concept presentation.',
+        mentor:'Startup mentor feedback, business idea critique, and pitch refinement support during the final project stage.',
+        certificate:'Yes. Includes a startup foundation certificate and mentor evaluation summary for the final concept presentation.',
+        faq:[
+          ['Can this help with business plan competitions?','Yes. The pitch and validation structure is highly useful for competitions and academic entrepreneurship events.'],
+          ['Is coding required?','No. The course focuses on business, validation, and strategic execution thinking.'],
+          ['Do I need a startup idea already?','No. The early modules help learners discover and refine opportunity areas.']
+        ],
+        reviews:[
+          ['Ayan Mitra','The customer discovery parts changed how I evaluate business ideas.','4.8'],
+          ['Poulomi Chatterjee','The pitch feedback sessions felt realistic and very valuable.','4.9']
+        ],
+        related:['BBA in Business Analytics Launchpad','Digital Marketing Career Starter']
+      }
+    ];
+
+    const courseGrid = document.getElementById('courseGrid');
+    const courseModalWrap = document.getElementById('courseModalWrap');
+    const modalContent = document.getElementById('modalContent');
+    const courseModalTitle = document.getElementById('courseModalTitle');
+    const closeModalBtn = document.getElementById('closeModal');
+    let lastFocusedButton = null;
+
+    function courseCardTemplate(course){
+      return `
+        <article class="course-card card-base">
+          <div class="banner ${course.bannerClass}">
+            <div>
+              <div class="c-pill" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.18);color:#fff">${course.heroTag}</div>
+              <h3 style="margin-top:12px;color:#fff">${course.title}</h3>
+            </div>
+          </div>
+          <div class="course-meta">
+            <span class="c-pill">${course.category}</span>
+            <span class="c-pill">${course.level}</span>
+            <span class="c-pill">${course.duration}</span>
+          </div>
+          <p>${course.short}</p>
+          <div class="split">
+            <div>
+              <div class="c-price">${course.price}</div>
+              <div class="tiny"><s>${course.original}</s> · ${course.learners}</div>
+            </div>
+            <div class="rating">★ ${course.rating}</div>
+          </div>
+          <div class="c-actions">
+            <button class="c-btn btn-outline details-btn" data-course="${course.id}">Details</button>
+            <button class="c-btn btn-solid enroll-inline" data-course="${course.id}">Enroll</button>
+          </div>
+        </article>
+      `;
+    }
+
+    function createModuleList(items){ return items.map(item => `<div class="module-item"><strong>${item.split('·')[0].trim()}</strong><span>${item.includes('·') ? item.split('·').slice(1).join('·').trim() : ''}</span></div>`).join(''); }
+    function createFeatureList(items){ return items.map(item => `<div class="feature-item"><strong>${item}</strong><span>Carefully structured to deliver direct academic and career value.</span></div>`).join(''); }
+    function createReviewList(items){ return items.map(([name,text,score]) => `<div class="review-card"><div class="review-top"><strong>${name}</strong><span class="stars">★★★★★ ${score}</span></div><p class="description">${text}</p></div>`).join(''); }
+    function createFaq(items){ return items.map(([q,a]) => `<div class="faq-item"><details><summary>${q}<span>+</span></summary><p>${a}</p></details></div>`).join(''); }
+    function createRelated(items){ return items.map(title => `<div class="related-card"><strong>${title}</strong><span class="tiny">Recommended based on skill overlap, learner goals, and progression path.</span><button class="mini-btn" onclick="scrollToTopAndClose()">Explore later</button></div>`).join(''); }
+
+    function openModal(courseId){
+      const course = courseCatalog.find(c => c.id === courseId);
+      if(!course) return;
+      courseModalTitle.textContent = course.title;
+      modalContent.innerHTML = `
+        <section class="detail-hero">
+          <div class="detail-banner ${course.bannerClass}">
+            <div class="c-pill" style="width:max-content;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.18);color:#fff">${course.heroTag}</div>
+            <h2>${course.title}</h2>
+            <p>${course.short}</p>
+            <div class="course-meta" style="margin-top:16px">
+              <span class="c-pill" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.18);color:#fff">Instructor: ${course.instructor}</span>
+              <span class="c-pill" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.18);color:#fff">${course.duration}</span>
+              <span class="c-pill" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.18);color:#fff">${course.level}</span>
+            </div>
+          </div>
+          <div class="detail-side">
+            <div class="info-card price-box">
+              <div class="tiny">Pricing</div>
+              <div class="amount">${course.price}</div>
+              <div class="tiny"><s>${course.original}</s> · Limited-period learner pricing</div>
+              <div class="stat-list" style="margin-top:16px">
+                <div class="stat-card"><strong>${course.rating}/5 rating</strong><span>${course.reviewsCount} verified learner reviews</span></div>
+                <div class="stat-card"><strong>${course.learners}</strong><span>Active learners in this course ecosystem</span></div>
+                <div class="stat-card"><strong>Certificate included</strong><span>Completion credentials and structured course outcome</span></div>
+              </div>
+              <button class="enroll-btn" style="margin-top:16px">Enroll now</button>
+            </div>
+            <div class="info-card support-card">
+              <h3 style="margin:0 0 10px;font-size:22px">Mentor & support</h3>
+              <p class="description">${course.mentor}</p>
+            </div>
+          </div>
+        </section>
+        <section class="detail-grid">
+          <div class="stack">
+            <div class="content-card">
+              <h3>Course description</h3>
+              <p class="description">${course.description}</p>
+            </div>
+            <div class="content-card">
+              <h3>Features & benefits</h3>
+              <div class="feature-grid">${createFeatureList(course.benefits)}</div>
+            </div>
+            <div class="content-card">
+              <h3>Syllabus & modules</h3>
+              <div class="module-list">${createModuleList(course.syllabus)}</div>
+            </div>
+            <div class="content-card">
+              <h3>Mock tests & assignments</h3>
+              <p class="description">${course.tests}</p>
+            </div>
+            <div class="content-card">
+              <h3>Student ratings & reviews</h3>
+              <div class="review-list">${createReviewList(course.reviews)}</div>
+            </div>
+            <div class="content-card">
+              <h3>FAQ</h3>
+              <div class="faq-list">${createFaq(course.faq)}</div>
+            </div>
+          </div>
+          <div class="stack">
+            <div class="content-card">
+              <h3>Course highlights</h3>
+              <div class="highlight-list">
+                ${course.highlights.map(item => `<div class="highlight"><strong style="display:block;margin-bottom:6px">${item}</strong><span style="color:rgba(255,255,255,.78)">Designed to improve outcomes through structured practice and guided support.</span></div>`).join('')}
+              </div>
+            </div>
+            <div class="content-card">
+              <h3>Certificate information</h3>
+              <div class="cert-box">${course.certificate}</div>
+            </div>
+            <div class="content-card">
+              <h3>Instructor</h3>
+              <div class="support-card"><strong>${course.instructor}</strong><span>Lead instructor for the ${course.category} learning track with practical teaching focus and structured mentor support.</span></div>
+            </div>
+            <div class="content-card">
+              <h3>Enrollment summary</h3>
+              <div class="module-list">
+                <div class="module-item"><strong>Duration</strong><span>${course.duration}</span></div>
+                <div class="module-item"><strong>Mode</strong><span>Blended self-paced learning with scheduled mentor touchpoints</span></div>
+                <div class="module-item"><strong>Access</strong><span>Recorded sessions, materials, worksheets, and downloadable resources</span></div>
+              </div>
+              <button class="enroll-btn" style="margin-top:16px">Start learning</button>
+            </div>
+            <div class="content-card">
+              <h3>Related courses</h3>
+              <div class="related-list">${createRelated(course.related)}</div>
+            </div>
+          </div>
+        </section>
+      `;
+      courseModalWrap.classList.add('active');
+      courseModalWrap.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+    }
+
+    function closeCourseModal(){
+      courseModalWrap.classList.remove('active');
+      courseModalWrap.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+      if(lastFocusedButton) lastFocusedButton.focus();
+    }
+
+    function scrollToTopAndClose(){
+      closeCourseModal();
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    window.scrollToTopAndClose = scrollToTopAndClose;
+
+    if(courseGrid) {
+      courseGrid.innerHTML = courseCatalog.map(courseCardTemplate).join('');
+    }
+
+    document.addEventListener('click', e => {
+      const detailBtn = e.target.closest('.details-btn');
+      const enrollBtn = e.target.closest('.enroll-inline');
+      if(detailBtn){
+        lastFocusedButton = detailBtn;
+        openModal(detailBtn.dataset.course);
+      }
+      if(enrollBtn){
+        lastFocusedButton = enrollBtn;
+        openModal(enrollBtn.dataset.course);
+      }
+      if(e.target === courseModalWrap) closeCourseModal();
+    });
+
+    if(closeModalBtn) closeModalBtn.addEventListener('click', closeCourseModal);
+    document.addEventListener('keydown', e => {
+      if(e.key === 'Escape' && courseModalWrap && courseModalWrap.classList.contains('active')) closeCourseModal();
+    });
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyAWg3mcyDHQFoMiHZhJd0NR0H-_XnLua90",
+      authDomain: "careersetu-48e9c.firebaseapp.com",
+      databaseURL: "https://careersetu-48e9c-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "careersetu-48e9c",
+      storageBucket: "careersetu-48e9c.firebasestorage.app",
+      messagingSenderId: "308878727765",
+      appId: "1:308878727765:web:6b9d60c8551a6c5bff52dc",
+      measurementId: "G-XCV7156M2T"
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+    
+    // Global Logout Function hook
+    document.querySelectorAll('.centralized-logout-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        await signOut(auth);
+        alert("Logged out successfully");
+        window.location.hash = "home";
+        window.location.reload();
+      });
+    });
+    
+    onAuthStateChanged(auth, async (user) => {
+      if(user){
+        console.log("User logged in:", user.email);
+        
+        // Fetch the user's details (like Name) from the Database
+        const snapshot = await get(ref(db, 'users/' + user.uid));
+        if (snapshot.exists()) {
+          const userData = snapshot.val();
+          const role = userData.role;
+          const name = userData.name;
+
+          // Update Top Nav
+          const userInfo = document.getElementById("user-info");
+          if(userInfo) userInfo.innerText = name;
+
+          // Update specific dashboard names
+          const stdUser = document.getElementById("std-user-name");
+          const tchUser = document.getElementById("tch-user-name");
+          const instUser = document.getElementById("inst-user-name");
+          if(stdUser) stdUser.innerText = name;
+          if(tchUser) tchUser.innerText = name;
+          if(instUser) instUser.innerText = name;
+
+          // Modify Top Nav Buttons
+          const navLoginBtn = document.getElementById("login-link");
+          const signupNavBtn = document.getElementById("signup-link");
+
+          if (navLoginBtn) {
+            navLoginBtn.innerText = "Dashboard";
+            navLoginBtn.href = "#";
+            navLoginBtn.onclick = (e) => {
+              e.preventDefault();
+              if (role === "Student") window.location.hash = "student-dashboard";
+              else if (role === "Teacher") window.location.hash = "teacher-dashboard";
+              else if (role === "Institute") window.location.hash = "institute-dashboard";
+            };
+          }
+
+          if (signupNavBtn) {
+            signupNavBtn.innerText = "Logout";
+            signupNavBtn.href = "#";
+            signupNavBtn.onclick = async (e) => {
+              e.preventDefault();
+              await signOut(auth);
+              alert("Logged out successfully");
+              location.hash = "home";
+              location.reload();
+            };
+          }
+        }
+      } else {
+        const navLoginBtn = document.getElementById("login-link");
+        const signupNavBtn = document.getElementById("signup-link");
+        if (navLoginBtn) {
+          navLoginBtn.innerText = "Login";
+          navLoginBtn.href = "#login";
+          navLoginBtn.dataset.route = "login";
+          navLoginBtn.onclick = null;
+        }
+        if (signupNavBtn) {
+          signupNavBtn.innerText = "Sign Up";
+          signupNavBtn.href = "#signup";
+          signupNavBtn.dataset.route = "signup";
+          signupNavBtn.onclick = null;
+        }
+      }
+    });
+    
+    // SIGNUP
+    const signupBtn = document.getElementById("signupBtn");
+    if(signupBtn){
+      signupBtn.addEventListener("click", async () => {
+        const email = document.getElementById("signup-email").value;
+        const password = document.getElementById("signup-password").value;
+        const name = document.getElementById("signup-name").value;
+        const role = document.getElementById("signup-role").value;
+        try {
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+          const user = userCredential.user;
+          await set(ref(db, 'users/' + user.uid), {
+            name: name,
+            email: email,
+            role: role,
+            uid: user.uid,
+            createdAt: new Date().toISOString()
+          });
+        
+          alert("Account Created Successfully");
+          if (role === "Student") window.location.hash = "student-dashboard";
+          else if (role === "Teacher") window.location.hash = "teacher-dashboard";
+          else if (role === "Institute") window.location.hash = "institute-dashboard";
+          else window.location.hash = "home";
+        } catch (error) {
+          alert(error.message);
+        }
+      });
+    }
+
+    // LOGIN
+    const loginBtn = document.getElementById("loginBtn");
+    if(loginBtn){
+      loginBtn.addEventListener("click", async () => {
+        const email = document.getElementById("login-email").value;
+        const password = document.getElementById("login-password").value;
+        try {
+          const userCredential = await signInWithEmailAndPassword(auth, email, password);
+          const user = userCredential.user;
+          const snapshot = await get(ref(db, 'users/' + user.uid));
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            const role = userData.role;
+            if (role === "Student") window.location.hash = "student-dashboard";
+            else if (role === "Teacher") window.location.hash = "teacher-dashboard";
+            else if (role === "Institute") window.location.hash = "institute-dashboard";
+            else window.location.hash = "home";
+          }
+        } catch (error) {
+          alert(error.message);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
